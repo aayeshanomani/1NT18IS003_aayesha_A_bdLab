@@ -1,0 +1,683 @@
+admin1@admin1-HP-280-G4-MT-Business-PC:~/Desktop$ mongo
+MongoDB shell version v4.4.4
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("82a4bc46-21a0-4b68-86a4-b3e3035c2d16") }
+MongoDB server version: 4.4.4
+---
+The server generated these startup warnings when booting: 
+        2021-03-23T14:43:27.407+05:30: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+        2021-03-23T14:43:34.035+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> show dbs
+admin       0.000GB
+config      0.000GB
+dbname      0.000GB
+empdetails  0.000GB
+local       0.000GB
+students    0.000GB
+> dbs
+uncaught exception: ReferenceError: dbs is not defined :
+@(shell):1:1
+> create a database called company with at least 10 docs in it with collection name called employeeDetails.
+... create empty collection with name test
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:7
+> insert many docs using insetrtMany commands
+\uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:7
+> list all the collections and docs.. then drop the collection test.. display all the documents of employeeDetails ina formatted way..
+... 
+... ^C
+
+> fname
+uncaught exception: ReferenceError: fname is not defined :
+@(shell):1:1
+> lname
+uncaught exception: ReferenceError: lname is not defined :
+@(shell):1:1
+> age email phone experience
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:4
+> db.Employ^CDetails.insert(_id: 1, fname: "Rohan", lname: "Sharma", age: 39, email: "rohan
+bye
+admin1@admin1-HP-280-G4-MT-Business-PC:~/Desktop$ mongo
+MongoDB shell version v4.4.4
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("632439f5-fcc8-4bcd-808d-367f2336ad4d") }
+MongoDB server version: 4.4.4
+---
+The server generated these startup warnings when booting: 
+        2021-03-23T14:43:27.407+05:30: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+        2021-03-23T14:43:34.035+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> use Company
+switched to db Company
+> db.employeeDetails.insert(_id: 1, fname: "Rohan", lname: "Sharma", age: 29, email: "rohan@hysh.com", phone: "8273899", experience: 2);
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:29
+> db.employeeDetails.insert({_id: 1, fname: "Rohan", lname: "Sharma", age: 29, email: "rohan@hysh.com", phone: "8273899", experience: 2})
+WriteResult({ "nInserted" : 1 })
+> db.employeeDetails.insertMany([{_id: 2, fname: "Rahul", lname: "ijdsk", age: 29, email: "rahul@hysh.com", phone: "8272299", experience: 3},{_id: 3, fname: "juasj", lname: "jkdk", age: 29, email: "rahul@hysh.com", phone: "8272299", experience: 3},{_id: 4, fname: "hjsdhj", lname: "ijdsk", age: 29, email: "rauie@hysh.com", phone: "829392999", experience: 5},{_id: 5, fname: "jusj", lname: "ijdsk", age: 29, email: "rahul@hysh.com", phone: "8272299", experience: 6},{_id: 5, fname: "hjgsdh", lname: "ijdsk", age: 29, email: "rahul@hysh.com", phone: "82782899", experience: 3}])
+uncaught exception: BulkWriteError({
+	"writeErrors" : [
+		{
+			"index" : 4,
+			"code" : 11000,
+			"errmsg" : "E11000 duplicate key error collection: Company.employeeDetails index: _id_ dup key: { _id: 5.0 }",
+			"op" : {
+				"_id" : 5,
+				"fname" : "hjgsdh",
+				"lname" : "ijdsk",
+				"age" : 29,
+				"email" : "rahul@hysh.com",
+				"phone" : "82782899",
+				"experience" : 3
+			}
+		}
+	],
+	"writeConcernErrors" : [ ],
+	"nInserted" : 4,
+	"nUpserted" : 0,
+	"nMatched" : 0,
+	"nModified" : 0,
+	"nRemoved" : 0,
+	"upserted" : [ ]
+}) :
+BulkWriteError({
+	"writeErrors" : [
+		{
+			"index" : 4,
+			"code" : 11000,
+			"errmsg" : "E11000 duplicate key error collection: Company.employeeDetails index: _id_ dup key: { _id: 5.0 }",
+			"op" : {
+				"_id" : 5,
+				"fname" : "hjgsdh",
+				"lname" : "ijdsk",
+				"age" : 29,
+				"email" : "rahul@hysh.com",
+				"phone" : "82782899",
+				"experience" : 3
+			}
+		}
+	],
+	"writeConcernErrors" : [ ],
+	"nInserted" : 4,
+	"nUpserted" : 0,
+	"nMatched" : 0,
+	"nModified" : 0,
+	"nRemoved" : 0,
+	"upserted" : [ ]
+})
+BulkWriteError@src/mongo/shell/bulk_api.js:367:48
+BulkWriteResult/this.toError@src/mongo/shell/bulk_api.js:332:24
+Bulk/this.execute@src/mongo/shell/bulk_api.js:1186:23
+DBCollection.prototype.insertMany@src/mongo/shell/crud_api.js:326:5
+@(shell):1:1
+> db.employeeDetails.insertMany([{_id: 2, fname: "Rahul", lname: "ijdsk", age: 29, email: "rahul@hysh.com", phone: "8272299", experience: 3},{_id: 3, fname: "juasj", lname: "jkdk", age: 29, email: "rahul@hysh.com", phone: "8272299", experience: 3},{_id: 4, fname: "hjsdhj", lname: "ijdsk", age: 29, email: "rauie@hysh.com", phone: "829392999", experience: 5},{_id: 5, fname: "jusj", lname: "ijdsk", age: 29, email: "rahul@hysh.com", phone: "8272299", experience: 6},{_id: 6, fname: "hjgsdh", lname: "ijdsk", age: 29, email: "rahul@hysh.com", phone: "82782899", experience: 3}])
+uncaught exception: BulkWriteError({
+	"writeErrors" : [
+		{
+			"index" : 0,
+			"code" : 11000,
+			"errmsg" : "E11000 duplicate key error collection: Company.employeeDetails index: _id_ dup key: { _id: 2.0 }",
+			"op" : {
+				"_id" : 2,
+				"fname" : "Rahul",
+				"lname" : "ijdsk",
+				"age" : 29,
+				"email" : "rahul@hysh.com",
+				"phone" : "8272299",
+				"experience" : 3
+			}
+		}
+	],
+	"writeConcernErrors" : [ ],
+	"nInserted" : 0,
+	"nUpserted" : 0,
+	"nMatched" : 0,
+	"nModified" : 0,
+	"nRemoved" : 0,
+	"upserted" : [ ]
+}) :
+BulkWriteError({
+	"writeErrors" : [
+		{
+			"index" : 0,
+			"code" : 11000,
+			"errmsg" : "E11000 duplicate key error collection: Company.employeeDetails index: _id_ dup key: { _id: 2.0 }",
+			"op" : {
+				"_id" : 2,
+				"fname" : "Rahul",
+				"lname" : "ijdsk",
+				"age" : 29,
+				"email" : "rahul@hysh.com",
+				"phone" : "8272299",
+				"experience" : 3
+			}
+		}
+	],
+	"writeConcernErrors" : [ ],
+	"nInserted" : 0,
+	"nUpserted" : 0,
+	"nMatched" : 0,
+	"nModified" : 0,
+	"nRemoved" : 0,
+	"upserted" : [ ]
+})
+BulkWriteError@src/mongo/shell/bulk_api.js:367:48
+BulkWriteResult/this.toError@src/mongo/shell/bulk_api.js:332:24
+Bulk/this.execute@src/mongo/shell/bulk_api.js:1186:23
+DBCollection.prototype.insertMany@src/mongo/shell/crud_api.js:326:5
+@(shell):1:1
+> db.employeeDetails.insertMany([{_id: 7, fname: "Rahul", lname: "ijdsk", age: 29, email: "rahul@hysh.com", phone: "8272299", experience: 3},{_id: 3, fname: "juasj", lname: "jkdk", age: 29, email: "rahul@hysh.com", phone: "8272299", experience: 3},{_id: 4, fname: "hjsdhj", lname: "ijdsk", age: 29, email: "rauie@hysh.com", phone: "829392999", experience: 5},{_id: 5, fname: "jusj", lname: "ijdsk", age: 29, email: "rahul@hysh.com", phone: "8272299", experience: 6},{_id: 6, fname: "hjgsdh", lname: "ijdsk", age: 29, email: "rahul@hysh.com", phone: "82782899", experience: 3}])
+uncaught exception: BulkWriteError({
+	"writeErrors" : [
+		{
+			"index" : 1,
+			"code" : 11000,
+			"errmsg" : "E11000 duplicate key error collection: Company.employeeDetails index: _id_ dup key: { _id: 3.0 }",
+			"op" : {
+				"_id" : 3,
+				"fname" : "juasj",
+				"lname" : "jkdk",
+				"age" : 29,
+				"email" : "rahul@hysh.com",
+				"phone" : "8272299",
+				"experience" : 3
+			}
+		}
+	],
+	"writeConcernErrors" : [ ],
+	"nInserted" : 1,
+	"nUpserted" : 0,
+	"nMatched" : 0,
+	"nModified" : 0,
+	"nRemoved" : 0,
+	"upserted" : [ ]
+}) :
+BulkWriteError({
+	"writeErrors" : [
+		{
+			"index" : 1,
+			"code" : 11000,
+			"errmsg" : "E11000 duplicate key error collection: Company.employeeDetails index: _id_ dup key: { _id: 3.0 }",
+			"op" : {
+				"_id" : 3,
+				"fname" : "juasj",
+				"lname" : "jkdk",
+				"age" : 29,
+				"email" : "rahul@hysh.com",
+				"phone" : "8272299",
+				"experience" : 3
+			}
+		}
+	],
+	"writeConcernErrors" : [ ],
+	"nInserted" : 1,
+	"nUpserted" : 0,
+	"nMatched" : 0,
+	"nModified" : 0,
+	"nRemoved" : 0,
+	"upserted" : [ ]
+})
+BulkWriteError@src/mongo/shell/bulk_api.js:367:48
+BulkWriteResult/this.toError@src/mongo/shell/bulk_api.js:332:24
+Bulk/this.execute@src/mongo/shell/bulk_api.js:1186:23
+DBCollection.prototype.insertMany@src/mongo/shell/crud_api.js:326:5
+@(shell):1:1
+> db.employeeDetails.find().pretty()
+{
+	"_id" : 1,
+	"fname" : "Rohan",
+	"lname" : "Sharma",
+	"age" : 29,
+	"email" : "rohan@hysh.com",
+	"phone" : "8273899",
+	"experience" : 2
+}
+{
+	"_id" : 2,
+	"fname" : "Rahul",
+	"lname" : "ijdsk",
+	"age" : 29,
+	"email" : "rahul@hysh.com",
+	"phone" : "8272299",
+	"experience" : 3
+}
+{
+	"_id" : 3,
+	"fname" : "juasj",
+	"lname" : "jkdk",
+	"age" : 29,
+	"email" : "rahul@hysh.com",
+	"phone" : "8272299",
+	"experience" : 3
+}
+{
+	"_id" : 4,
+	"fname" : "hjsdhj",
+	"lname" : "ijdsk",
+	"age" : 29,
+	"email" : "rauie@hysh.com",
+	"phone" : "829392999",
+	"experience" : 5
+}
+{
+	"_id" : 5,
+	"fname" : "jusj",
+	"lname" : "ijdsk",
+	"age" : 29,
+	"email" : "rahul@hysh.com",
+	"phone" : "8272299",
+	"experience" : 6
+}
+{
+	"_id" : 7,
+	"fname" : "Rahul",
+	"lname" : "ijdsk",
+	"age" : 29,
+	"email" : "rahul@hysh.com",
+	"phone" : "8272299",
+	"experience" : 3
+}
+> db.employeeDetails.insert({_id: 6, fname: "Milit", lname: "wh", age: 23, email: "milit@hysh.com", phone: "8273899", experience: 3})
+WriteResult({ "nInserted" : 1 })
+> db.employeeDetails.insert({_id: 8, fname: "N", lname: "Light", age: 24, email: "NLIght@hysh.com", phone: "82733499", experience: 3})
+WriteResult({ "nInserted" : 1 })
+> db.employeeDetails.find().pretty()
+{
+	"_id" : 1,
+	"fname" : "Rohan",
+	"lname" : "Sharma",
+	"age" : 29,
+	"email" : "rohan@hysh.com",
+	"phone" : "8273899",
+	"experience" : 2
+}
+{
+	"_id" : 2,
+	"fname" : "Rahul",
+	"lname" : "ijdsk",
+	"age" : 29,
+	"email" : "rahul@hysh.com",
+	"phone" : "8272299",
+	"experience" : 3
+}
+{
+	"_id" : 3,
+	"fname" : "juasj",
+	"lname" : "jkdk",
+	"age" : 29,
+	"email" : "rahul@hysh.com",
+	"phone" : "8272299",
+	"experience" : 3
+}
+{
+	"_id" : 4,
+	"fname" : "hjsdhj",
+	"lname" : "ijdsk",
+	"age" : 29,
+	"email" : "rauie@hysh.com",
+	"phone" : "829392999",
+	"experience" : 5
+}
+{
+	"_id" : 5,
+	"fname" : "jusj",
+	"lname" : "ijdsk",
+	"age" : 29,
+	"email" : "rahul@hysh.com",
+	"phone" : "8272299",
+	"experience" : 6
+}
+{
+	"_id" : 7,
+	"fname" : "Rahul",
+	"lname" : "ijdsk",
+	"age" : 29,
+	"email" : "rahul@hysh.com",
+	"phone" : "8272299",
+	"experience" : 3
+}
+{
+	"_id" : 6,
+	"fname" : "Milit",
+	"lname" : "wh",
+	"age" : 23,
+	"email" : "milit@hysh.com",
+	"phone" : "8273899",
+	"experience" : 3
+}
+{
+	"_id" : 8,
+	"fname" : "N",
+	"lname" : "Light",
+	"age" : 24,
+	"email" : "NLIght@hysh.com",
+	"phone" : "82733499",
+	"experience" : 3
+}
+> db.employeeDetails.insert({_id: 8, fname: "Yagami", lname: "Light", age: 24, email: "yagamiLIght@hysh.com", phone: "3782899", experience: 2})
+WriteResult({
+	"nInserted" : 0,
+	"writeError" : {
+		"code" : 11000,
+		"errmsg" : "E11000 duplicate key error collection: Company.employeeDetails index: _id_ dup key: { _id: 8.0 }"
+	}
+})
+> db.employeeDetails.insert({_id: 9, fname: "Yagami", lname: "Light", age: 24, email: "yagamiLIght@hysh.com", phone: "3782899", experience: 2})
+WriteResult({ "nInserted" : 1 })
+> db.employeeDetails.insert({_id: 10, fname: "Luffy", lname: "Monkey", age: 38, email: "monkeydluffy@hysh.com", phone: "0738289", experience: 9})
+WriteResult({ "nInserted" : 1 })
+> db.employeeDetails.find().pretty()
+{
+	"_id" : 1,
+	"fname" : "Rohan",
+	"lname" : "Sharma",
+	"age" : 29,
+	"email" : "rohan@hysh.com",
+	"phone" : "8273899",
+	"experience" : 2
+}
+{
+	"_id" : 2,
+	"fname" : "Rahul",
+	"lname" : "ijdsk",
+	"age" : 29,
+	"email" : "rahul@hysh.com",
+	"phone" : "8272299",
+	"experience" : 3
+}
+{
+	"_id" : 3,
+	"fname" : "juasj",
+	"lname" : "jkdk",
+	"age" : 29,
+	"email" : "rahul@hysh.com",
+	"phone" : "8272299",
+	"experience" : 3
+}
+{
+	"_id" : 4,
+	"fname" : "hjsdhj",
+	"lname" : "ijdsk",
+	"age" : 29,
+	"email" : "rauie@hysh.com",
+	"phone" : "829392999",
+	"experience" : 5
+}
+{
+	"_id" : 5,
+	"fname" : "jusj",
+	"lname" : "ijdsk",
+	"age" : 29,
+	"email" : "rahul@hysh.com",
+	"phone" : "8272299",
+	"experience" : 6
+}
+{
+	"_id" : 7,
+	"fname" : "Rahul",
+	"lname" : "ijdsk",
+	"age" : 29,
+	"email" : "rahul@hysh.com",
+	"phone" : "8272299",
+	"experience" : 3
+}
+{
+	"_id" : 6,
+	"fname" : "Milit",
+	"lname" : "wh",
+	"age" : 23,
+	"email" : "milit@hysh.com",
+	"phone" : "8273899",
+	"experience" : 3
+}
+{
+	"_id" : 8,
+	"fname" : "N",
+	"lname" : "Light",
+	"age" : 24,
+	"email" : "NLIght@hysh.com",
+	"phone" : "82733499",
+	"experience" : 3
+}
+{
+	"_id" : 9,
+	"fname" : "Yagami",
+	"lname" : "Light",
+	"age" : 24,
+	"email" : "yagamiLIght@hysh.com",
+	"phone" : "3782899",
+	"experience" : 2
+}
+{
+	"_id" : 10,
+	"fname" : "Luffy",
+	"lname" : "Monkey",
+	"age" : 38,
+	"email" : "monkeydluffy@hysh.com",
+	"phone" : "0738289",
+	"experience" : 9
+}
+> db.createCollection("test")
+{ "ok" : 1 }
+> show collections
+employeeDetails
+test
+> db.test.insertMany([{_id: 1, name: "Zoro"}, {_id: 2, name: "Sanji"}, {_id: 3, name: "Nami"}])
+{ "acknowledged" : true, "insertedIds" : [ 1, 2, 3 ] }
+> db.test.find()
+{ "_id" : 1, "name" : "Zoro" }
+{ "_id" : 2, "name" : "Sanji" }
+{ "_id" : 3, "name" : "Nami" }
+> db.test.deleteCollection()
+uncaught exception: TypeError: db.test.deleteCollection is not a function :
+@(shell):1:1
+> db.test.drop()
+true
+> 
+
+insert document with save method
+update with save method
+
+list all the details of the employee with fname = "rachel"
+
+retrieve with last name "smith" and experience = 5
+
+retrieve with experience of 5 or 6 years
+
+
+db.employeeDetails.save({id: 11, fname: "rachel", lname: "Smith", experience: 5, email: "rachel@jaj.com", age: 28})
+WriteResult({ "nInserted" : 1 })
+> db.employeeDetails.save({_id: 3, fname: "rachel", lname: "Smith", experience: 6})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.employeeDetails.save({_id: 5, fname: "Sanji", lname: "vinsmoke", experience: 6})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.employeeDetails.find()
+{ "_id" : 1, "fname" : "Rohan", "lname" : "Sharma", "age" : 29, "email" : "rohan@hysh.com", "phone" : "8273899", "experience" : 2 }
+{ "_id" : 2, "fname" : "Rahul", "lname" : "ijdsk", "age" : 29, "email" : "rahul@hysh.com", "phone" : "8272299", "experience" : 3 }
+{ "_id" : 3, "fname" : "rachel", "lname" : "Smith", "experience" : 6 }
+{ "_id" : 4, "fname" : "hjsdhj", "lname" : "ijdsk", "age" : 29, "email" : "rauie@hysh.com", "phone" : "829392999", "experience" : 5 }
+{ "_id" : 5, "fname" : "Sanji", "lname" : "vinsmoke", "experience" : 6 }
+{ "_id" : 7, "fname" : "Rahul", "lname" : "ijdsk", "age" : 29, "email" : "rahul@hysh.com", "phone" : "8272299", "experience" : 3 }
+{ "_id" : 6, "fname" : "Milit", "lname" : "wh", "age" : 23, "email" : "milit@hysh.com", "phone" : "8273899", "experience" : 3 }
+{ "_id" : 8, "fname" : "N", "lname" : "Light", "age" : 24, "email" : "NLIght@hysh.com", "phone" : "82733499", "experience" : 3 }
+{ "_id" : 9, "fname" : "Yagami", "lname" : "Light", "age" : 24, "email" : "yagamiLIght@hysh.com", "phone" : "3782899", "experience" : 2 }
+{ "_id" : 10, "fname" : "Luffy", "lname" : "Monkey", "age" : 38, "email" : "monkeydluffy@hysh.com", "phone" : "0738289", "experience" : 9 }
+{ "_id" : ObjectId("6059bf9ad7ef0589ddfd57a3"), "id" : 11, "fname" : "rachel", "lname" : "Smith", "experience" : 5, "email" : "rachel@jaj.com", "age" : 28 }
+> db.employeeDetails.find().pretty()
+{
+	"_id" : 1,
+	"fname" : "Rohan",
+	"lname" : "Sharma",
+	"age" : 29,
+	"email" : "rohan@hysh.com",
+	"phone" : "8273899",
+	"experience" : 2
+}
+{
+	"_id" : 2,
+	"fname" : "Rahul",
+	"lname" : "ijdsk",
+	"age" : 29,
+	"email" : "rahul@hysh.com",
+	"phone" : "8272299",
+	"experience" : 3
+}
+{ "_id" : 3, "fname" : "rachel", "lname" : "Smith", "experience" : 6 }
+{
+	"_id" : 4,
+	"fname" : "hjsdhj",
+	"lname" : "ijdsk",
+	"age" : 29,
+	"email" : "rauie@hysh.com",
+	"phone" : "829392999",
+	"experience" : 5
+}
+{ "_id" : 5, "fname" : "Sanji", "lname" : "vinsmoke", "experience" : 6 }
+{
+	"_id" : 7,
+	"fname" : "Rahul",
+	"lname" : "ijdsk",
+	"age" : 29,
+	"email" : "rahul@hysh.com",
+	"phone" : "8272299",
+	"experience" : 3
+}
+{
+	"_id" : 6,
+	"fname" : "Milit",
+	"lname" : "wh",
+	"age" : 23,
+	"email" : "milit@hysh.com",
+	"phone" : "8273899",
+	"experience" : 3
+}
+{
+	"_id" : 8,
+	"fname" : "N",
+	"lname" : "Light",
+	"age" : 24,
+	"email" : "NLIght@hysh.com",
+	"phone" : "82733499",
+	"experience" : 3
+}
+{
+	"_id" : 9,
+	"fname" : "Yagami",
+	"lname" : "Light",
+	"age" : 24,
+	"email" : "yagamiLIght@hysh.com",
+	"phone" : "3782899",
+	"experience" : 2
+}
+{
+	"_id" : 10,
+	"fname" : "Luffy",
+	"lname" : "Monkey",
+	"age" : 38,
+	"email" : "monkeydluffy@hysh.com",
+	"phone" : "0738289",
+	"experience" : 9
+}
+{
+	"_id" : ObjectId("6059bf9ad7ef0589ddfd57a3"),
+	"id" : 11,
+	"fname" : "rachel",
+	"lname" : "Smith",
+	"experience" : 5,
+	"email" : "rachel@jaj.com",
+	"age" : 28
+}
+> db.employeeDetails.find()
+{ "_id" : 1, "fname" : "Rohan", "lname" : "Sharma", "age" : 29, "email" : "rohan@hysh.com", "phone" : "8273899", "experience" : 2 }
+{ "_id" : 2, "fname" : "Rahul", "lname" : "ijdsk", "age" : 29, "email" : "rahul@hysh.com", "phone" : "8272299", "experience" : 3 }
+{ "_id" : 3, "fname" : "rachel", "lname" : "Smith", "experience" : 6 }
+{ "_id" : 4, "fname" : "hjsdhj", "lname" : "ijdsk", "age" : 29, "email" : "rauie@hysh.com", "phone" : "829392999", "experience" : 5 }
+{ "_id" : 5, "fname" : "Sanji", "lname" : "vinsmoke", "experience" : 6 }
+{ "_id" : 7, "fname" : "Rahul", "lname" : "ijdsk", "age" : 29, "email" : "rahul@hysh.com", "phone" : "8272299", "experience" : 3 }
+{ "_id" : 6, "fname" : "Milit", "lname" : "wh", "age" : 23, "email" : "milit@hysh.com", "phone" : "8273899", "experience" : 3 }
+{ "_id" : 8, "fname" : "N", "lname" : "Light", "age" : 24, "email" : "NLIght@hysh.com", "phone" : "82733499", "experience" : 3 }
+{ "_id" : 9, "fname" : "Yagami", "lname" : "Light", "age" : 24, "email" : "yagamiLIght@hysh.com", "phone" : "3782899", "experience" : 2 }
+{ "_id" : 10, "fname" : "Luffy", "lname" : "Monkey", "age" : 38, "email" : "monkeydluffy@hysh.com", "phone" : "0738289", "experience" : 9 }
+{ "_id" : ObjectId("6059bf9ad7ef0589ddfd57a3"), "id" : 11, "fname" : "rachel", "lname" : "Smith", "experience" : 5, "email" : "rachel@jaj.com", "age" : 28 }
+> db.employeeDetails.delete({id:11})
+uncaught exception: TypeError: db.employeeDetails.delete is not a function :
+@(shell):1:1
+> db.employeeDetails.deleteOne({id:11})
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.employeeDetails.save({_id: 11, fname: "rachel", lname: "Smith", experience: 5, email: "rachel@jaj.com", age: 28})
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : 11 })
+> db.employeeDetails.find()
+{ "_id" : 1, "fname" : "Rohan", "lname" : "Sharma", "age" : 29, "email" : "rohan@hysh.com", "phone" : "8273899", "experience" : 2 }
+{ "_id" : 2, "fname" : "Rahul", "lname" : "ijdsk", "age" : 29, "email" : "rahul@hysh.com", "phone" : "8272299", "experience" : 3 }
+{ "_id" : 3, "fname" : "rachel", "lname" : "Smith", "experience" : 6 }
+{ "_id" : 4, "fname" : "hjsdhj", "lname" : "ijdsk", "age" : 29, "email" : "rauie@hysh.com", "phone" : "829392999", "experience" : 5 }
+{ "_id" : 5, "fname" : "Sanji", "lname" : "vinsmoke", "experience" : 6 }
+{ "_id" : 7, "fname" : "Rahul", "lname" : "ijdsk", "age" : 29, "email" : "rahul@hysh.com", "phone" : "8272299", "experience" : 3 }
+{ "_id" : 6, "fname" : "Milit", "lname" : "wh", "age" : 23, "email" : "milit@hysh.com", "phone" : "8273899", "experience" : 3 }
+{ "_id" : 8, "fname" : "N", "lname" : "Light", "age" : 24, "email" : "NLIght@hysh.com", "phone" : "82733499", "experience" : 3 }
+{ "_id" : 9, "fname" : "Yagami", "lname" : "Light", "age" : 24, "email" : "yagamiLIght@hysh.com", "phone" : "3782899", "experience" : 2 }
+{ "_id" : 10, "fname" : "Luffy", "lname" : "Monkey", "age" : 38, "email" : "monkeydluffy@hysh.com", "phone" : "0738289", "experience" : 9 }
+{ "_id" : 11, "fname" : "rachel", "lname" : "Smith", "experience" : 5, "email" : "rachel@jaj.com", "age" : 28 }
+> db.employeeDetails.find({fname: "rachel")}
+uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:40
+> db.employeeDetails.find({fname: "rachel"})
+{ "_id" : 3, "fname" : "rachel", "lname" : "Smith", "experience" : 6 }
+{ "_id" : 11, "fname" : "rachel", "lname" : "Smith", "experience" : 5, "email" : "rachel@jaj.com", "age" : 28 }
+> db.employeeDetails.find({lname: "Smith", experience: 5})
+{ "_id" : 11, "fname" : "rachel", "lname" : "Smith", "experience" : 5, "email" : "rachel@jaj.com", "age" : 28 }
+> db.employeeDetails.find({experience: 5 $or experience: 6})
+uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:39
+> db.employeeDetails.find({experience: 5} $or {experience: 6})
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:40
+> db.employeeDetails.find([{experience: 5} $or {experience: 6}])
+uncaught exception: SyntaxError: missing ] after element list :
+@(shell):1:41
+> db.employeeDetails.find([{experience: 5},{experience: 6}])
+Error: error: {
+	"ok" : 0,
+	"errmsg" : "Failed to parse: filter: [ { experience: 5.0 }, { experience: 6.0 } ]. 'filter' field must be of BSON type object.",
+	"code" : 9,
+	"codeName" : "FailedToParse"
+}
+> db.employeeDetails.find([$or: {experience: 5},{experience: 6}])
+uncaught exception: SyntaxError: missing ] after element list :
+@(shell):1:28
+> db.employeeDetails.find($or: [{experience: 5},{experience: 6}])
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:27
+> db.employeeDetails.find({$or: [{experience: 5},{experience: 6}]})
+{ "_id" : 3, "fname" : "rachel", "lname" : "Smith", "experience" : 6 }
+{ "_id" : 4, "fname" : "hjsdhj", "lname" : "ijdsk", "age" : 29, "email" : "rauie@hysh.com", "phone" : "829392999", "experience" : 5 }
+{ "_id" : 5, "fname" : "Sanji", "lname" : "vinsmoke", "experience" : 6 }
+{ "_id" : 11, "fname" : "rachel", "lname" : "Smith", "experience" : 5, "email" : "rachel@jaj.com", "age" : 28 }
+> 
+
+
