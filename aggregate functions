@@ -1,0 +1,320 @@
+aayesha@aayesha:~/Desktop$ mongo
+MongoDB shell version v3.6.8
+connecting to: mongodb://127.0.0.1:27017
+Implicit session: session { "id" : UUID("7ff2ba5d-4267-4689-9551-0750fe801760") }
+MongoDB server version: 3.6.8
+Server has startup warnings: 
+2021-04-01T12:19:17.747+0530 I STORAGE  [initandlisten] 
+2021-04-01T12:19:17.747+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2021-04-01T12:19:17.747+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2021-04-01T12:19:23.042+0530 I CONTROL  [initandlisten] 
+2021-04-01T12:19:23.042+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-04-01T12:19:23.042+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-04-01T12:19:23.042+0530 I CONTROL  [initandlisten] 
+> use myDb
+switched to db myDb
+> show collections
+Students
+> db.createCollection("Customers")
+{ "ok" : 1 }
+> db.Customers.insertMany({
+... ^C
+
+> db.Customers.insertMany({_id:1, custId: "a123", amount: 500, status: "a"},{_id:2, custId: "a123", amount: 250, status: "a"},{_id:3, custId: "b123", amount: 200, status: "a"}, {_id:4, custId: "a123", amount: 300, status: "d"},{_id:5, custId: "b123", amount: 400, status: "d"})
+2021-04-01T12:28:08.305+0530 E QUERY    [thread1] TypeError: documents.map is not a function :
+DBCollection.prototype.insertMany@src/mongo/shell/crud_api.js:295:1
+@(shell):1:1
+> db.Customers.insertMany([{_id:1, custId: "a123", amount: 500, status: "a"},{_id:2, custId: "a123", amount: 250, status: "a"},{_id:3, custId: "b123", amount: 200, status: "a"}, {_id:4, custId: "a123", amount: 300, status: "d"},{_id:5, custId: "b123", amount: 400, status: "d"}])
+{ "acknowledged" : true, "insertedIds" : [ 1, 2, 3, 4, 5 ] }
+> db.Customers.aggregate([{$match: {status: "a"}}])
+{ "_id" : 1, "custId" : "a123", "amount" : 500, "status" : "a" }
+{ "_id" : 2, "custId" : "a123", "amount" : 250, "status" : "a" }
+{ "_id" : 3, "custId" : "b123", "amount" : 200, "status" : "a" }
+> db.Customers.aggregate({$match: {status: "a"}})
+{ "_id" : 1, "custId" : "a123", "amount" : 500, "status" : "a" }
+{ "_id" : 2, "custId" : "a123", "amount" : 250, "status" : "a" }
+{ "_id" : 3, "custId" : "b123", "amount" : 200, "status" : "a" }
+> db.Customers.aggregate([{$max: "$amount"}])
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "Unrecognized pipeline stage name: '$max'",
+	"code" : 40324,
+	"codeName" : "Location40324"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-04-01T12:33:09.774+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "Unrecognized pipeline stage name: '$max'",
+	"code" : 40324,
+	"codeName" : "Location40324"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> db.Customers.aggregate({$group: {_id: {$max: "$amount"}}})
+{ "_id" : 400 }
+{ "_id" : 300 }
+{ "_id" : 200 }
+{ "_id" : 250 }
+{ "_id" : 500 }
+> db.Customers.aggregate({$group: {_id: ${$max: "$amount"}}})
+2021-04-01T12:34:23.458+0530 E QUERY    [thread1] SyntaxError: missing } after property list @(shell):1:39
+> db.Customers.aggregate({$group: {$max: "$amount"}}})
+2021-04-01T12:34:35.321+0530 E QUERY    [thread1] SyntaxError: missing ) after argument list @(shell):1:50
+> db.Customers.aggregate({$group: {_id: ${$max: "$amount"}}})
+2021-04-01T12:34:37.356+0530 E QUERY    [thread1] SyntaxError: missing } after property list @(shell):1:39
+> db.Customers.aggregate({$group: {_id: {$max: "$amount"}}})
+{ "_id" : 400 }
+{ "_id" : 300 }
+{ "_id" : 200 }
+{ "_id" : 250 }
+{ "_id" : 500 }
+> db.Customers.aggregate({$group: {_id: {$match{$max: "$amount"}}}})
+2021-04-01T12:35:16.651+0530 E QUERY    [thread1] SyntaxError: missing : after property id @(shell):1:45
+> db.Customers.aggregate({$group: {_id: "$custId", amount: {$max: "$amount"}}})
+{ "_id" : "b123", "amount" : 400 }
+{ "_id" : "a123", "amount" : 500 }
+> db.Customers.aggregate({$group: {amount: {$max: "$amount"}}})
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "a group specification must include an _id",
+	"code" : 15955,
+	"codeName" : "Location15955"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-04-01T12:38:11.916+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "a group specification must include an _id",
+	"code" : 15955,
+	"codeName" : "Location15955"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> db.Customers.aggregate({$group: {_id: {amount: {$max: "$amount"}}})
+... db.Customers.aggregate({$group: {amount: {$max: "$amount"}}})^C
+
+> db.Customers.aggregate({$group: {amount: {$max: "$amount"}}}})
+2021-04-01T12:38:42.562+0530 E QUERY    [thread1] SyntaxError: missing ) after argument list @(shell):1:60
+> db.Customers.aggregate({$group: {_id: {$max: "$amount"}}}})
+2021-04-01T12:39:02.229+0530 E QUERY    [thread1] SyntaxError: missing ) after argument list @(shell):1:57
+> db.Customers.aggregate({$group: {_id: {$max: "$amount"}}})
+{ "_id" : 400 }
+{ "_id" : 300 }
+{ "_id" : 200 }
+{ "_id" : 250 }
+{ "_id" : 500 }
+> db.Customers.aggregate({$group: {_id: "$custId", amount: {$max: "$amount"}}})
+{ "_id" : "b123", "amount" : 400 }
+{ "_id" : "a123", "amount" : 500 }
+> db.Customers.aggregate({$group: {_id, amount: {$max: "$amount"}}})
+2021-04-01T12:39:26.813+0530 E QUERY    [thread1] ReferenceError: _id is not defined :
+@(shell):1:34
+> db.Customers.aggregate({$group: {_id: "$_id", amount: {$max: "$amount"}}})
+{ "_id" : 5, "amount" : 400 }
+{ "_id" : 4, "amount" : 300 }
+{ "_id" : 3, "amount" : 200 }
+{ "_id" : 2, "amount" : 250 }
+{ "_id" : 1, "amount" : 500 }
+> db.Customers.aggregate({$group: {_id: { amount: {$max: "$amount"}}}})
+{ "_id" : { "amount" : 400 } }
+{ "_id" : { "amount" : 300 } }
+{ "_id" : { "amount" : 200 } }
+{ "_id" : { "amount" : 250 } }
+{ "_id" : { "amount" : 500 } }
+> db.Customers.aggregate({$group: {_id: "$amount", {amount: {$max: "$amount"}}}})
+2021-04-01T12:40:29.892+0530 E QUERY    [thread1] SyntaxError: invalid property id @(shell):1:49
+> db.Customers.aggregate({$group: {_id: "$amount", amount: {$max: "$amount"}}})
+{ "_id" : 400, "amount" : 400 }
+{ "_id" : 300, "amount" : 300 }
+{ "_id" : 200, "amount" : 200 }
+{ "_id" : 250, "amount" : 250 }
+{ "_id" : 500, "amount" : 500 }
+> db.Customers.aggregate([{$group: {_id: "custId"}, {amount: {$max: "$amount"}}}])
+2021-04-01T12:41:55.191+0530 E QUERY    [thread1] SyntaxError: invalid property id @(shell):1:50
+> db.Customers.aggregate([{$group: {_id: "custId"}, {amount: {$max: "$amount"}}}])
+2021-04-01T12:42:11.013+0530 E QUERY    [thread1] SyntaxError: invalid property id @(shell):1:50
+> db.Customers.aggregate([{$group: _id: "custId", amount: {$max: "$amount"}}])
+2021-04-01T12:42:40.016+0530 E QUERY    [thread1] SyntaxError: missing } after property list @(shell):1:36
+> db.Customers.aggregate([{$group: {_id: "custId"}, amount: {$max: "$amount"}}])
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "A pipeline stage specification object must contain exactly one field.",
+	"code" : 40323,
+	"codeName" : "Location40323"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-04-01T12:43:01.961+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "A pipeline stage specification object must contain exactly one field.",
+	"code" : 40323,
+	"codeName" : "Location40323"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> db.Customers.aggregate({$group: {_id: "$custId", amount: {$max: "$amount"}}})
+{ "_id" : "b123", "amount" : 400 }
+{ "_id" : "a123", "amount" : 500 }
+> db.Customers.aggregate({$group: {_id: null, amount: {$max: "$amount"}}})
+{ "_id" : null, "amount" : 500 }
+> db.Customers.aggregate({$group: {_id: null, custId: "$custId",  amount: {$max: "$amount"}}})
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "The field 'custId' must be an accumulator object",
+	"code" : 40234,
+	"codeName" : "Location40234"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-04-01T12:45:46.424+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "The field 'custId' must be an accumulator object",
+	"code" : 40234,
+	"codeName" : "Location40234"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> db.Customers.aggregate({$group: {_id: null, {custId: "$custId"},  amount: {$max: "$amount"}}})
+2021-04-01T12:45:56.330+0530 E QUERY    [thread1] SyntaxError: invalid property id @(shell):1:44
+> db.Customers.aggregate({$group: {_id: null, amount: {$max: "$amount"}}})
+{ "_id" : null, "amount" : 500 }
+> db.Customers.aggregate({$group: {_id: null, amount: {$max: "$amount"}, custId: "$custId"}})
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "The field 'custId' must be an accumulator object",
+	"code" : 40234,
+	"codeName" : "Location40234"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-04-01T12:46:36.171+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "The field 'custId' must be an accumulator object",
+	"code" : 40234,
+	"codeName" : "Location40234"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> db.Customers.aggregate([{$group: {_id: null, amount: {$max: "$amount"}, custId: "$custId"}}])
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "The field 'custId' must be an accumulator object",
+	"code" : 40234,
+	"codeName" : "Location40234"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-04-01T12:46:50.168+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "The field 'custId' must be an accumulator object",
+	"code" : 40234,
+	"codeName" : "Location40234"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> db.Customers.aggregate([{$project: {amount: {$max: "$amount"}, custId: "$custId"}}])
+{ "_id" : 1, "amount" : 500, "custId" : "a123" }
+{ "_id" : 2, "amount" : 250, "custId" : "a123" }
+{ "_id" : 3, "amount" : 200, "custId" : "b123" }
+{ "_id" : 4, "amount" : 300, "custId" : "a123" }
+{ "_id" : 5, "amount" : 400, "custId" : "b123" }
+> db.Customers.aggregate([$group: _id: null, {$project: {amount: {$max: "$amount"}, custId: "$custId"}}])
+2021-04-01T12:48:18.631+0530 E QUERY    [thread1] SyntaxError: missing ] after element list @(shell):1:30
+> db.Customers.aggregate({$group: {_id: null, amount: {$max: "$amount"}}})
+{ "_id" : null, "amount" : 500 }
+> db.Customers.aggregate({$group: {_id: "$custId", amount: {$max: "$amount"}}})
+{ "_id" : "b123", "amount" : 400 }
+{ "_id" : "a123", "amount" : 500 }
+> db.Customers.aggregate({$group: {_id: null, amount: {$max: "$amount"}}})
+{ "_id" : null, "amount" : 500 }
+> db.Customers.aggregate({$group: {_id, amount: {$max: "$amount"}}})
+2021-04-01T12:52:32.763+0530 E QUERY    [thread1] ReferenceError: _id is not defined :
+@(shell):1:34
+> db.Customers.aggregate({$group: {_id: "$_id", amount: {$max: "$amount"}}})
+{ "_id" : 5, "amount" : 400 }
+{ "_id" : 4, "amount" : 300 }
+{ "_id" : 3, "amount" : 200 }
+{ "_id" : 2, "amount" : 250 }
+{ "_id" : 1, "amount" : 500 }
+> db.Customers.aggregate({$group: {_id: "$custId"}}).count()
+2021-04-01T12:56:35.830+0530 E QUERY    [thread1] TypeError: db.Customers.aggregate(...).count is not a function :
+@(shell):1:1
+> db.Customers.aggregate({$group: {_id: "$custId", status: {$sum: 1}}})
+{ "_id" : "b123", "status" : 2 }
+{ "_id" : "a123", "status" : 3 }
+> db.Customers.aggregate({$project: {custId: 1, status:1, _id: 0}})
+{ "custId" : "a123", "status" : "a" }
+{ "custId" : "a123", "status" : "a" }
+{ "custId" : "b123", "status" : "a" }
+{ "custId" : "a123", "status" : "d" }
+{ "custId" : "b123", "status" : "d" }
+> db.Customers.aggregate({$limit: 3})
+{ "_id" : 1, "custId" : "a123", "amount" : 500, "status" : "a" }
+{ "_id" : 2, "custId" : "a123", "amount" : 250, "status" : "a" }
+{ "_id" : 3, "custId" : "b123", "amount" : 200, "status" : "a" }
+> db.Customers.aggregate({$group: {_id: "$custId", amount: {$sum: "$amount"}}})
+{ "_id" : "b123", "amount" : 600 }
+{ "_id" : "a123", "amount" : 1050 }
+> db.Customers.aggregate($match: {amount: {$gte: 300}})
+2021-04-01T13:04:26.545+0530 E QUERY    [thread1] SyntaxError: missing ) after argument list @(shell):1:29
+> db.Customers.aggregate({$match: {amount: {$gte: 300}}})
+{ "_id" : 1, "custId" : "a123", "amount" : 500, "status" : "a" }
+{ "_id" : 4, "custId" : "a123", "amount" : 300, "status" : "d" }
+{ "_id" : 5, "custId" : "b123", "amount" : 400, "status" : "d" }
+> 
+
