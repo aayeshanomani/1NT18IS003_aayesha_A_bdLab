@@ -1,0 +1,471 @@
+aayesha@aayesha:~$ mongoimport --type csv -d iris -c flowers --headerline --drop /home/aayesha/Downloads/archive/Iris.csv
+2021-04-20T14:48:59.458+0530	connected to: localhost
+2021-04-20T14:48:59.460+0530	dropping: iris.flowers
+2021-04-20T14:48:59.642+0530	imported 150 documents
+aayesha@aayesha:~$ mongo
+MongoDB shell version v3.6.8
+connecting to: mongodb://127.0.0.1:27017
+Implicit session: session { "id" : UUID("fe89d7db-24a1-4ddf-97bb-95ffac2d0ad8") }
+MongoDB server version: 3.6.8
+Server has startup warnings: 
+2021-04-20T14:09:21.107+0530 I STORAGE  [initandlisten] 
+2021-04-20T14:09:21.107+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2021-04-20T14:09:21.107+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2021-04-20T14:09:26.587+0530 I CONTROL  [initandlisten] 
+2021-04-20T14:09:26.587+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-04-20T14:09:26.587+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-04-20T14:09:26.587+0530 I CONTROL  [initandlisten] 
+> show dbs
+admin     0.000GB
+config    0.000GB
+iris      0.000GB
+local     0.000GB
+myDb      0.000GB
+program1  0.000GB
+> use iris
+switched to db iris
+> show collections
+flowers
+> db.flowers.find()
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8761"), "Id" : 1, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8762"), "Id" : 2, "SepalLengthCm" : 4.9, "SepalWidthCm" : 3, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8763"), "Id" : 3, "SepalLengthCm" : 4.7, "SepalWidthCm" : 3.2, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8764"), "Id" : 4, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.1, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8765"), "Id" : 5, "SepalLengthCm" : 5, "SepalWidthCm" : 3.6, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8766"), "Id" : 6, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.9, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8767"), "Id" : 7, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8768"), "Id" : 8, "SepalLengthCm" : 5, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8769"), "Id" : 9, "SepalLengthCm" : 4.4, "SepalWidthCm" : 2.9, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae876a"), "Id" : 11, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.7, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae876b"), "Id" : 10, "SepalLengthCm" : 4.9, "SepalWidthCm" : 3.1, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae876c"), "Id" : 12, "SepalLengthCm" : 4.8, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.6, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae876d"), "Id" : 16, "SepalLengthCm" : 5.7, "SepalWidthCm" : 4.4, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae876e"), "Id" : 15, "SepalLengthCm" : 5.8, "SepalWidthCm" : 4, "PetalLengthCm" : 1.2, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae876f"), "Id" : 13, "SepalLengthCm" : 4.8, "SepalWidthCm" : 3, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8770"), "Id" : 17, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.9, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8771"), "Id" : 14, "SepalLengthCm" : 4.3, "SepalWidthCm" : 3, "PetalLengthCm" : 1.1, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8772"), "Id" : 18, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8773"), "Id" : 20, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.8, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8774"), "Id" : 19, "SepalLengthCm" : 5.7, "SepalWidthCm" : 3.8, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+Type "it" for more
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> it
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8775"), "Id" : 22, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.7, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8776"), "Id" : 21, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8777"), "Id" : 23, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.6, "PetalLengthCm" : 1, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8778"), "Id" : 24, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.3, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.5, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8779"), "Id" : 25, "SepalLengthCm" : 4.8, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.9, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae877a"), "Id" : 26, "SepalLengthCm" : 5, "SepalWidthCm" : 3, "PetalLengthCm" : 1.6, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae877b"), "Id" : 27, "SepalLengthCm" : 5, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.6, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae877c"), "Id" : 28, "SepalLengthCm" : 5.2, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae877d"), "Id" : 29, "SepalLengthCm" : 5.2, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae877e"), "Id" : 30, "SepalLengthCm" : 4.7, "SepalWidthCm" : 3.2, "PetalLengthCm" : 1.6, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae877f"), "Id" : 31, "SepalLengthCm" : 4.8, "SepalWidthCm" : 3.1, "PetalLengthCm" : 1.6, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8780"), "Id" : 33, "SepalLengthCm" : 5.2, "SepalWidthCm" : 4.1, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8781"), "Id" : 32, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8782"), "Id" : 36, "SepalLengthCm" : 5, "SepalWidthCm" : 3.2, "PetalLengthCm" : 1.2, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8783"), "Id" : 34, "SepalLengthCm" : 5.5, "SepalWidthCm" : 4.2, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8784"), "Id" : 35, "SepalLengthCm" : 4.9, "SepalWidthCm" : 3.1, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8785"), "Id" : 39, "SepalLengthCm" : 4.4, "SepalWidthCm" : 3, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8786"), "Id" : 37, "SepalLengthCm" : 5.5, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8787"), "Id" : 46, "SepalLengthCm" : 4.8, "SepalWidthCm" : 3, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8788"), "Id" : 47, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.8, "PetalLengthCm" : 1.6, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+Type "it" for more
+> it
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8789"), "Id" : 48, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.2, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae878a"), "Id" : 38, "SepalLengthCm" : 4.9, "SepalWidthCm" : 3.1, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae878b"), "Id" : 50, "SepalLengthCm" : 5, "SepalWidthCm" : 3.3, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae878c"), "Id" : 51, "SepalLengthCm" : 7, "SepalWidthCm" : 3.2, "PetalLengthCm" : 4.7, "PetalWidthCm" : 1.4, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae878d"), "Id" : 52, "SepalLengthCm" : 6.4, "SepalWidthCm" : 3.2, "PetalLengthCm" : 4.5, "PetalWidthCm" : 1.5, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae878e"), "Id" : 53, "SepalLengthCm" : 6.9, "SepalWidthCm" : 3.1, "PetalLengthCm" : 4.9, "PetalWidthCm" : 1.5, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae878f"), "Id" : 54, "SepalLengthCm" : 5.5, "SepalWidthCm" : 2.3, "PetalLengthCm" : 4, "PetalWidthCm" : 1.3, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8790"), "Id" : 55, "SepalLengthCm" : 6.5, "SepalWidthCm" : 2.8, "PetalLengthCm" : 4.6, "PetalWidthCm" : 1.5, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8791"), "Id" : 56, "SepalLengthCm" : 5.7, "SepalWidthCm" : 2.8, "PetalLengthCm" : 4.5, "PetalWidthCm" : 1.3, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8792"), "Id" : 57, "SepalLengthCm" : 6.3, "SepalWidthCm" : 3.3, "PetalLengthCm" : 4.7, "PetalWidthCm" : 1.6, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8793"), "Id" : 58, "SepalLengthCm" : 4.9, "SepalWidthCm" : 2.4, "PetalLengthCm" : 3.3, "PetalWidthCm" : 1, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8794"), "Id" : 59, "SepalLengthCm" : 6.6, "SepalWidthCm" : 2.9, "PetalLengthCm" : 4.6, "PetalWidthCm" : 1.3, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8795"), "Id" : 60, "SepalLengthCm" : 5.2, "SepalWidthCm" : 2.7, "PetalLengthCm" : 3.9, "PetalWidthCm" : 1.4, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8796"), "Id" : 61, "SepalLengthCm" : 5, "SepalWidthCm" : 2, "PetalLengthCm" : 3.5, "PetalWidthCm" : 1, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8797"), "Id" : 62, "SepalLengthCm" : 5.9, "SepalWidthCm" : 3, "PetalLengthCm" : 4.2, "PetalWidthCm" : 1.5, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8798"), "Id" : 63, "SepalLengthCm" : 6, "SepalWidthCm" : 2.2, "PetalLengthCm" : 4, "PetalWidthCm" : 1, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae8799"), "Id" : 64, "SepalLengthCm" : 6.1, "SepalWidthCm" : 2.9, "PetalLengthCm" : 4.7, "PetalWidthCm" : 1.4, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae879a"), "Id" : 65, "SepalLengthCm" : 5.6, "SepalWidthCm" : 2.9, "PetalLengthCm" : 3.6, "PetalWidthCm" : 1.3, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae879b"), "Id" : 66, "SepalLengthCm" : 6.7, "SepalWidthCm" : 3.1, "PetalLengthCm" : 4.4, "PetalWidthCm" : 1.4, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae879c"), "Id" : 42, "SepalLengthCm" : 4.5, "SepalWidthCm" : 2.3, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+Type "it" for more
+> it
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae879d"), "Id" : 67, "SepalLengthCm" : 5.6, "SepalWidthCm" : 3, "PetalLengthCm" : 4.5, "PetalWidthCm" : 1.5, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae879e"), "Id" : 68, "SepalLengthCm" : 5.8, "SepalWidthCm" : 2.7, "PetalLengthCm" : 4.1, "PetalWidthCm" : 1, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae879f"), "Id" : 44, "SepalLengthCm" : 5, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.6, "PetalWidthCm" : 0.6, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87a0"), "Id" : 69, "SepalLengthCm" : 6.2, "SepalWidthCm" : 2.2, "PetalLengthCm" : 4.5, "PetalWidthCm" : 1.5, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87a1"), "Id" : 40, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87a2"), "Id" : 70, "SepalLengthCm" : 5.6, "SepalWidthCm" : 2.5, "PetalLengthCm" : 3.9, "PetalWidthCm" : 1.1, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87a3"), "Id" : 41, "SepalLengthCm" : 5, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87a4"), "Id" : 43, "SepalLengthCm" : 4.4, "SepalWidthCm" : 3.2, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87a5"), "Id" : 45, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.8, "PetalLengthCm" : 1.9, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87a6"), "Id" : 49, "SepalLengthCm" : 5.3, "SepalWidthCm" : 3.7, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87a7"), "Id" : 71, "SepalLengthCm" : 5.9, "SepalWidthCm" : 3.2, "PetalLengthCm" : 4.8, "PetalWidthCm" : 1.8, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87a8"), "Id" : 72, "SepalLengthCm" : 6.1, "SepalWidthCm" : 2.8, "PetalLengthCm" : 4, "PetalWidthCm" : 1.3, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87a9"), "Id" : 73, "SepalLengthCm" : 6.3, "SepalWidthCm" : 2.5, "PetalLengthCm" : 4.9, "PetalWidthCm" : 1.5, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87aa"), "Id" : 79, "SepalLengthCm" : 6, "SepalWidthCm" : 2.9, "PetalLengthCm" : 4.5, "PetalWidthCm" : 1.5, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87ab"), "Id" : 82, "SepalLengthCm" : 5.5, "SepalWidthCm" : 2.4, "PetalLengthCm" : 3.7, "PetalWidthCm" : 1, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87ac"), "Id" : 77, "SepalLengthCm" : 6.8, "SepalWidthCm" : 2.8, "PetalLengthCm" : 4.8, "PetalWidthCm" : 1.4, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87ad"), "Id" : 83, "SepalLengthCm" : 5.8, "SepalWidthCm" : 2.7, "PetalLengthCm" : 3.9, "PetalWidthCm" : 1.2, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87ae"), "Id" : 74, "SepalLengthCm" : 6.1, "SepalWidthCm" : 2.8, "PetalLengthCm" : 4.7, "PetalWidthCm" : 1.2, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87af"), "Id" : 75, "SepalLengthCm" : 6.4, "SepalWidthCm" : 2.9, "PetalLengthCm" : 4.3, "PetalWidthCm" : 1.3, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87b0"), "Id" : 80, "SepalLengthCm" : 5.7, "SepalWidthCm" : 2.6, "PetalLengthCm" : 3.5, "PetalWidthCm" : 1, "Species" : "Iris-versicolor" }
+Type "it" for more
+> it
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87b1"), "Id" : 76, "SepalLengthCm" : 6.6, "SepalWidthCm" : 3, "PetalLengthCm" : 4.4, "PetalWidthCm" : 1.4, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87b2"), "Id" : 81, "SepalLengthCm" : 5.5, "SepalWidthCm" : 2.4, "PetalLengthCm" : 3.8, "PetalWidthCm" : 1.1, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87b3"), "Id" : 78, "SepalLengthCm" : 6.7, "SepalWidthCm" : 3, "PetalLengthCm" : 5, "PetalWidthCm" : 1.7, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87b4"), "Id" : 84, "SepalLengthCm" : 6, "SepalWidthCm" : 2.7, "PetalLengthCm" : 5.1, "PetalWidthCm" : 1.6, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87b5"), "Id" : 85, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3, "PetalLengthCm" : 4.5, "PetalWidthCm" : 1.5, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87b6"), "Id" : 86, "SepalLengthCm" : 6, "SepalWidthCm" : 3.4, "PetalLengthCm" : 4.5, "PetalWidthCm" : 1.6, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87b7"), "Id" : 87, "SepalLengthCm" : 6.7, "SepalWidthCm" : 3.1, "PetalLengthCm" : 4.7, "PetalWidthCm" : 1.5, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87b8"), "Id" : 88, "SepalLengthCm" : 6.3, "SepalWidthCm" : 2.3, "PetalLengthCm" : 4.4, "PetalWidthCm" : 1.3, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87b9"), "Id" : 89, "SepalLengthCm" : 5.6, "SepalWidthCm" : 3, "PetalLengthCm" : 4.1, "PetalWidthCm" : 1.3, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87ba"), "Id" : 90, "SepalLengthCm" : 5.5, "SepalWidthCm" : 2.5, "PetalLengthCm" : 4, "PetalWidthCm" : 1.3, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87bb"), "Id" : 91, "SepalLengthCm" : 5.5, "SepalWidthCm" : 2.6, "PetalLengthCm" : 4.4, "PetalWidthCm" : 1.2, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87bc"), "Id" : 93, "SepalLengthCm" : 5.8, "SepalWidthCm" : 2.6, "PetalLengthCm" : 4, "PetalWidthCm" : 1.2, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87bd"), "Id" : 92, "SepalLengthCm" : 6.1, "SepalWidthCm" : 3, "PetalLengthCm" : 4.6, "PetalWidthCm" : 1.4, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87be"), "Id" : 95, "SepalLengthCm" : 5.6, "SepalWidthCm" : 2.7, "PetalLengthCm" : 4.2, "PetalWidthCm" : 1.3, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87bf"), "Id" : 94, "SepalLengthCm" : 5, "SepalWidthCm" : 2.3, "PetalLengthCm" : 3.3, "PetalWidthCm" : 1, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87c0"), "Id" : 97, "SepalLengthCm" : 5.7, "SepalWidthCm" : 2.9, "PetalLengthCm" : 4.2, "PetalWidthCm" : 1.3, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87c1"), "Id" : 100, "SepalLengthCm" : 5.7, "SepalWidthCm" : 2.8, "PetalLengthCm" : 4.1, "PetalWidthCm" : 1.3, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87c2"), "Id" : 98, "SepalLengthCm" : 6.2, "SepalWidthCm" : 2.9, "PetalLengthCm" : 4.3, "PetalWidthCm" : 1.3, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87c3"), "Id" : 99, "SepalLengthCm" : 5.1, "SepalWidthCm" : 2.5, "PetalLengthCm" : 3, "PetalWidthCm" : 1.1, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87c4"), "Id" : 101, "SepalLengthCm" : 6.3, "SepalWidthCm" : 3.3, "PetalLengthCm" : 6, "PetalWidthCm" : 2.5, "Species" : "Iris-virginica" }
+Type "it" for more
+> it
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87c5"), "Id" : 102, "SepalLengthCm" : 5.8, "SepalWidthCm" : 2.7, "PetalLengthCm" : 5.1, "PetalWidthCm" : 1.9, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87c6"), "Id" : 104, "SepalLengthCm" : 6.3, "SepalWidthCm" : 2.9, "PetalLengthCm" : 5.6, "PetalWidthCm" : 1.8, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87c7"), "Id" : 103, "SepalLengthCm" : 7.1, "SepalWidthCm" : 3, "PetalLengthCm" : 5.9, "PetalWidthCm" : 2.1, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87c8"), "Id" : 106, "SepalLengthCm" : 7.6, "SepalWidthCm" : 3, "PetalLengthCm" : 6.6, "PetalWidthCm" : 2.1, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87c9"), "Id" : 107, "SepalLengthCm" : 4.9, "SepalWidthCm" : 2.5, "PetalLengthCm" : 4.5, "PetalWidthCm" : 1.7, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87ca"), "Id" : 108, "SepalLengthCm" : 7.3, "SepalWidthCm" : 2.9, "PetalLengthCm" : 6.3, "PetalWidthCm" : 1.8, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87cb"), "Id" : 96, "SepalLengthCm" : 5.7, "SepalWidthCm" : 3, "PetalLengthCm" : 4.2, "PetalWidthCm" : 1.2, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87cc"), "Id" : 109, "SepalLengthCm" : 6.7, "SepalWidthCm" : 2.5, "PetalLengthCm" : 5.8, "PetalWidthCm" : 1.8, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87cd"), "Id" : 110, "SepalLengthCm" : 7.2, "SepalWidthCm" : 3.6, "PetalLengthCm" : 6.1, "PetalWidthCm" : 2.5, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87ce"), "Id" : 111, "SepalLengthCm" : 6.5, "SepalWidthCm" : 3.2, "PetalLengthCm" : 5.1, "PetalWidthCm" : 2, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87cf"), "Id" : 112, "SepalLengthCm" : 6.4, "SepalWidthCm" : 2.7, "PetalLengthCm" : 5.3, "PetalWidthCm" : 1.9, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87d0"), "Id" : 113, "SepalLengthCm" : 6.8, "SepalWidthCm" : 3, "PetalLengthCm" : 5.5, "PetalWidthCm" : 2.1, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87d1"), "Id" : 114, "SepalLengthCm" : 5.7, "SepalWidthCm" : 2.5, "PetalLengthCm" : 5, "PetalWidthCm" : 2, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87d2"), "Id" : 115, "SepalLengthCm" : 5.8, "SepalWidthCm" : 2.8, "PetalLengthCm" : 5.1, "PetalWidthCm" : 2.4, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87d3"), "Id" : 116, "SepalLengthCm" : 6.4, "SepalWidthCm" : 3.2, "PetalLengthCm" : 5.3, "PetalWidthCm" : 2.3, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87d4"), "Id" : 118, "SepalLengthCm" : 7.7, "SepalWidthCm" : 3.8, "PetalLengthCm" : 6.7, "PetalWidthCm" : 2.2, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87d5"), "Id" : 119, "SepalLengthCm" : 7.7, "SepalWidthCm" : 2.6, "PetalLengthCm" : 6.9, "PetalWidthCm" : 2.3, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87d6"), "Id" : 117, "SepalLengthCm" : 6.5, "SepalWidthCm" : 3, "PetalLengthCm" : 5.5, "PetalWidthCm" : 1.8, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87d7"), "Id" : 120, "SepalLengthCm" : 6, "SepalWidthCm" : 2.2, "PetalLengthCm" : 5, "PetalWidthCm" : 1.5, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87d8"), "Id" : 105, "SepalLengthCm" : 6.5, "SepalWidthCm" : 3, "PetalLengthCm" : 5.8, "PetalWidthCm" : 2.2, "Species" : "Iris-virginica" }
+Type "it" for more
+> it
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87d9"), "Id" : 122, "SepalLengthCm" : 5.6, "SepalWidthCm" : 2.8, "PetalLengthCm" : 4.9, "PetalWidthCm" : 2, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87da"), "Id" : 121, "SepalLengthCm" : 6.9, "SepalWidthCm" : 3.2, "PetalLengthCm" : 5.7, "PetalWidthCm" : 2.3, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87db"), "Id" : 124, "SepalLengthCm" : 6.3, "SepalWidthCm" : 2.7, "PetalLengthCm" : 4.9, "PetalWidthCm" : 1.8, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87dc"), "Id" : 125, "SepalLengthCm" : 6.7, "SepalWidthCm" : 3.3, "PetalLengthCm" : 5.7, "PetalWidthCm" : 2.1, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87dd"), "Id" : 127, "SepalLengthCm" : 6.2, "SepalWidthCm" : 2.8, "PetalLengthCm" : 4.8, "PetalWidthCm" : 1.8, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87de"), "Id" : 126, "SepalLengthCm" : 7.2, "SepalWidthCm" : 3.2, "PetalLengthCm" : 6, "PetalWidthCm" : 1.8, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87df"), "Id" : 123, "SepalLengthCm" : 7.7, "SepalWidthCm" : 2.8, "PetalLengthCm" : 6.7, "PetalWidthCm" : 2, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87e0"), "Id" : 130, "SepalLengthCm" : 7.2, "SepalWidthCm" : 3, "PetalLengthCm" : 5.8, "PetalWidthCm" : 1.6, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87e1"), "Id" : 129, "SepalLengthCm" : 6.4, "SepalWidthCm" : 2.8, "PetalLengthCm" : 5.6, "PetalWidthCm" : 2.1, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87e2"), "Id" : 128, "SepalLengthCm" : 6.1, "SepalWidthCm" : 3, "PetalLengthCm" : 4.9, "PetalWidthCm" : 1.8, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87e3"), "Id" : 131, "SepalLengthCm" : 7.4, "SepalWidthCm" : 2.8, "PetalLengthCm" : 6.1, "PetalWidthCm" : 1.9, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87e4"), "Id" : 132, "SepalLengthCm" : 7.9, "SepalWidthCm" : 3.8, "PetalLengthCm" : 6.4, "PetalWidthCm" : 2, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87e5"), "Id" : 137, "SepalLengthCm" : 6.3, "SepalWidthCm" : 3.4, "PetalLengthCm" : 5.6, "PetalWidthCm" : 2.4, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87e6"), "Id" : 133, "SepalLengthCm" : 6.4, "SepalWidthCm" : 2.8, "PetalLengthCm" : 5.6, "PetalWidthCm" : 2.2, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87e7"), "Id" : 136, "SepalLengthCm" : 7.7, "SepalWidthCm" : 3, "PetalLengthCm" : 6.1, "PetalWidthCm" : 2.3, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87e8"), "Id" : 142, "SepalLengthCm" : 6.9, "SepalWidthCm" : 3.1, "PetalLengthCm" : 5.1, "PetalWidthCm" : 2.3, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87e9"), "Id" : 135, "SepalLengthCm" : 6.1, "SepalWidthCm" : 2.6, "PetalLengthCm" : 5.6, "PetalWidthCm" : 1.4, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87ea"), "Id" : 143, "SepalLengthCm" : 5.8, "SepalWidthCm" : 2.7, "PetalLengthCm" : 5.1, "PetalWidthCm" : 1.9, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87eb"), "Id" : 139, "SepalLengthCm" : 6, "SepalWidthCm" : 3, "PetalLengthCm" : 4.8, "PetalWidthCm" : 1.8, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87ec"), "Id" : 138, "SepalLengthCm" : 6.4, "SepalWidthCm" : 3.1, "PetalLengthCm" : 5.5, "PetalWidthCm" : 1.8, "Species" : "Iris-virginica" }
+Type "it" for more
+> it
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87ed"), "Id" : 140, "SepalLengthCm" : 6.9, "SepalWidthCm" : 3.1, "PetalLengthCm" : 5.4, "PetalWidthCm" : 2.1, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87ee"), "Id" : 141, "SepalLengthCm" : 6.7, "SepalWidthCm" : 3.1, "PetalLengthCm" : 5.6, "PetalWidthCm" : 2.4, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87ef"), "Id" : 144, "SepalLengthCm" : 6.8, "SepalWidthCm" : 3.2, "PetalLengthCm" : 5.9, "PetalWidthCm" : 2.3, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87f0"), "Id" : 134, "SepalLengthCm" : 6.3, "SepalWidthCm" : 2.8, "PetalLengthCm" : 5.1, "PetalWidthCm" : 1.5, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87f1"), "Id" : 149, "SepalLengthCm" : 6.2, "SepalWidthCm" : 3.4, "PetalLengthCm" : 5.4, "PetalWidthCm" : 2.3, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87f2"), "Id" : 148, "SepalLengthCm" : 6.5, "SepalWidthCm" : 3, "PetalLengthCm" : 5.2, "PetalWidthCm" : 2, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87f3"), "Id" : 150, "SepalLengthCm" : 5.9, "SepalWidthCm" : 3, "PetalLengthCm" : 5.1, "PetalWidthCm" : 1.8, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87f4"), "Id" : 145, "SepalLengthCm" : 6.7, "SepalWidthCm" : 3.3, "PetalLengthCm" : 5.7, "PetalWidthCm" : 2.5, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87f5"), "Id" : 146, "SepalLengthCm" : 6.7, "SepalWidthCm" : 3, "PetalLengthCm" : 5.2, "PetalWidthCm" : 2.3, "Species" : "Iris-virginica" }
+{ "_id" : ObjectId("607e9c839ab25c1fa7ae87f6"), "Id" : 147, "SepalLengthCm" : 6.3, "SepalWidthCm" : 2.5, "PetalLengthCm" : 5, "PetalWidthCm" : 1.9, "Species" : "Iris-virginica" }
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> db.flowers.count()
+150
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> exit
+bye
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ mongoexport --collection=flowers --db=iris --out=/home/aayesha/Downloads/archive/iris.json
+2021-04-20T14:54:35.473+0530	connected to: localhost
+2021-04-20T14:54:35.483+0530	exported 150 records
+aayesha@aayesha:~$ mongoexport --collection=flowers --db=iris --out=/home/aayesha/Downloads/archive/iris.csv
+2021-04-20T14:57:13.581+0530	connected to: localhost
+2021-04-20T14:57:13.588+0530	exported 150 records
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ mongoimport --db irisJson --collection flowers --file /home/aayesha/Downloads/archive/iris.json
+2021-04-20T14:59:07.469+0530	connected to: localhost
+2021-04-20T14:59:07.626+0530	imported 150 documents
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ mongo
+MongoDB shell version v3.6.8
+connecting to: mongodb://127.0.0.1:27017
+Implicit session: session { "id" : UUID("5e276f3d-b6be-44c6-9eaf-027140cd9266") }
+MongoDB server version: 3.6.8
+Server has startup warnings: 
+2021-04-20T14:09:21.107+0530 I STORAGE  [initandlisten] 
+2021-04-20T14:09:21.107+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2021-04-20T14:09:21.107+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2021-04-20T14:09:26.587+0530 I CONTROL  [initandlisten] 
+2021-04-20T14:09:26.587+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-04-20T14:09:26.587+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-04-20T14:09:26.587+0530 I CONTROL  [initandlisten] 
+> 
+> 
+> 
+> show dbs
+admin     0.000GB
+config    0.000GB
+iris      0.000GB
+irisJson  0.000GB
+local     0.000GB
+myDb      0.000GB
+program1  0.000GB
+> 
+> 
+> 
+> use irisJson
+switched to db irisJson
+> 
+> 
+> 
+> show collections
+flowers
+> 
+> 
+> 
+> db.flowers.count()
+150
+> 
+> 
+> 
+> exit
+bye
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ mongo
+MongoDB shell version v3.6.8
+connecting to: mongodb://127.0.0.1:27017
+Implicit session: session { "id" : UUID("f0bb4d1a-9a8a-4f61-96e6-36fe014d6761") }
+MongoDB server version: 3.6.8
+Server has startup warnings: 
+2021-04-20T14:09:21.107+0530 I STORAGE  [initandlisten] 
+2021-04-20T14:09:21.107+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2021-04-20T14:09:21.107+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2021-04-20T14:09:26.587+0530 I CONTROL  [initandlisten] 
+2021-04-20T14:09:26.587+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-04-20T14:09:26.587+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-04-20T14:09:26.587+0530 I CONTROL  [initandlisten] 
+> 
+> 
+> 
+> show dbs
+admin     0.000GB
+config    0.000GB
+iris      0.000GB
+irisJson  0.000GB
+local     0.000GB
+myDb      0.000GB
+program1  0.000GB
+> 
+> 
+> 
+> use regex
+switched to db regex
+> 
+> 
+> 
+> show collections
+> 
+> 
+> 
+> db.createCollection("test")
+{ "ok" : 1 }
+> 
+> 
+> 
+> db.test.insertMany({name: "Alia"}, {name: "Bebo"}, {name: "Chameli"}) 
+2021-04-20T15:02:40.186+0530 E QUERY    [thread1] TypeError: documents.map is not a function :
+DBCollection.prototype.insertMany@src/mongo/shell/crud_api.js:295:1
+@(shell):1:1
+> db.test.insertMany([{name: "Alia"}, {name: "Bebo"}, {name: "Chameli"}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("607e9fc3529e44b5cd9608e7"),
+		ObjectId("607e9fc3529e44b5cd9608e8"),
+		ObjectId("607e9fc3529e44b5cd9608e9")
+	]
+}
+> db.test.insertMany([{name: "Dev D"}, {name: "Emily"}, {name: "Farhan"}, {name: "Gangs"}, {name: "Hum"}, {name: 25}, {name: "Satush", age: 37}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("607ea00b529e44b5cd9608ea"),
+		ObjectId("607ea00b529e44b5cd9608eb"),
+		ObjectId("607ea00b529e44b5cd9608ec"),
+		ObjectId("607ea00b529e44b5cd9608ed"),
+		ObjectId("607ea00b529e44b5cd9608ee"),
+		ObjectId("607ea00b529e44b5cd9608ef"),
+		ObjectId("607ea00b529e44b5cd9608f0")
+	]
+}
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> db.test.find()
+{ "_id" : ObjectId("607e9fc3529e44b5cd9608e7"), "name" : "Alia" }
+{ "_id" : ObjectId("607e9fc3529e44b5cd9608e8"), "name" : "Bebo" }
+{ "_id" : ObjectId("607e9fc3529e44b5cd9608e9"), "name" : "Chameli" }
+{ "_id" : ObjectId("607ea00b529e44b5cd9608ea"), "name" : "Dev D" }
+{ "_id" : ObjectId("607ea00b529e44b5cd9608eb"), "name" : "Emily" }
+{ "_id" : ObjectId("607ea00b529e44b5cd9608ec"), "name" : "Farhan" }
+{ "_id" : ObjectId("607ea00b529e44b5cd9608ed"), "name" : "Gangs" }
+{ "_id" : ObjectId("607ea00b529e44b5cd9608ee"), "name" : "Hum" }
+{ "_id" : ObjectId("607ea00b529e44b5cd9608ef"), "name" : 25 }
+{ "_id" : ObjectId("607ea00b529e44b5cd9608f0"), "name" : "Satush", "age" : 37 }
+> 
+> 
+> 
+> db.test.count()
+10
+> 
+> 
+> 
+> db.test.find({"age": {$exists: true}})
+{ "_id" : ObjectId("607ea00b529e44b5cd9608f0"), "name" : "Satush", "age" : 37 }
+> 
+> 
+> 
+> db.test.find({"age": {$exists: false}})
+{ "_id" : ObjectId("607e9fc3529e44b5cd9608e7"), "name" : "Alia" }
+{ "_id" : ObjectId("607e9fc3529e44b5cd9608e8"), "name" : "Bebo" }
+{ "_id" : ObjectId("607e9fc3529e44b5cd9608e9"), "name" : "Chameli" }
+{ "_id" : ObjectId("607ea00b529e44b5cd9608ea"), "name" : "Dev D" }
+{ "_id" : ObjectId("607ea00b529e44b5cd9608eb"), "name" : "Emily" }
+{ "_id" : ObjectId("607ea00b529e44b5cd9608ec"), "name" : "Farhan" }
+{ "_id" : ObjectId("607ea00b529e44b5cd9608ed"), "name" : "Gangs" }
+{ "_id" : ObjectId("607ea00b529e44b5cd9608ee"), "name" : "Hum" }
+{ "_id" : ObjectId("607ea00b529e44b5cd9608ef"), "name" : 25 }
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> db.test.find({"name": {$type:1}})
+{ "_id" : ObjectId("607ea00b529e44b5cd9608ef"), "name" : 25 }
+> 
+> 
+> 
+> //regex-operation
+> 
+> 
+> //list all the documents with letter small e in it
+> 
+> 
+> db.test.find({"name": {$regex: "e"}})
+{ "_id" : ObjectId("607e9fc3529e44b5cd9608e8"), "name" : "Bebo" }
+{ "_id" : ObjectId("607e9fc3529e44b5cd9608e9"), "name" : "Chameli" }
+{ "_id" : ObjectId("607ea00b529e44b5cd9608ea"), "name" : "Dev D" }
+> 
+> 
+> 
+> db.test.find({"name": {$regex: "^[A-E]"}})
+{ "_id" : ObjectId("607e9fc3529e44b5cd9608e7"), "name" : "Alia" }
+{ "_id" : ObjectId("607e9fc3529e44b5cd9608e8"), "name" : "Bebo" }
+{ "_id" : ObjectId("607e9fc3529e44b5cd9608e9"), "name" : "Chameli" }
+{ "_id" : ObjectId("607ea00b529e44b5cd9608ea"), "name" : "Dev D" }
+{ "_id" : ObjectId("607ea00b529e44b5cd9608eb"), "name" : "Emily" }
+> 
+> 
+> 
+> exit
+bye
+
