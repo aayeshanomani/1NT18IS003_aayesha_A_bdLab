@@ -1,0 +1,645 @@
+aayesha@aayesha:~$ mongoimport --type csv -d iris -c flowers --headerline --drop /home/aayesha/Downloads/archive/Iris.csv
+2021-04-20T15:27:33.930+0530	connected to: localhost
+2021-04-20T15:27:33.931+0530	dropping: iris.flowers
+2021-04-20T15:27:34.071+0530	imported 150 documents
+aayesha@aayesha:~$ mongo
+MongoDB shell version v3.6.8
+connecting to: mongodb://127.0.0.1:27017
+Implicit session: session { "id" : UUID("f37e1f9a-c84d-4a14-b469-765b39ced557") }
+MongoDB server version: 3.6.8
+Server has startup warnings: 
+2021-04-20T14:09:21.107+0530 I STORAGE  [initandlisten] 
+2021-04-20T14:09:21.107+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2021-04-20T14:09:21.107+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2021-04-20T14:09:26.587+0530 I CONTROL  [initandlisten] 
+2021-04-20T14:09:26.587+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-04-20T14:09:26.587+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-04-20T14:09:26.587+0530 I CONTROL  [initandlisten] 
+> 
+> 
+> 
+> show dbs
+admin     0.000GB
+config    0.000GB
+iris      0.000GB
+local     0.000GB
+myDb      0.000GB
+program1  0.000GB
+regex     0.000GB
+> 
+> 
+> 
+> use iris
+switched to db iris
+> 
+> 
+> 
+> show collections
+flowers
+> 
+> 
+> 
+> db.flowers.count()
+150
+> 
+> 
+> 
+> exit
+bye
+aayesha@aayesha:~$ mongoexport --collection=flowers --db=iris --out=/home/aayesha/Downloads/archive/iris.json
+2021-04-20T15:28:34.762+0530	connected to: localhost
+2021-04-20T15:28:34.769+0530	exported 150 records
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ mongoexport --collection=flowers --db=iris --out=/home/aayesha/Downloads/archive/iris.csv
+2021-04-20T15:28:41.741+0530	connected to: localhost
+2021-04-20T15:28:41.749+0530	exported 150 records
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ mongoimport --db irisJson --collection flowers --file /home/aayesha/Downloads/archive/iris.json
+2021-04-20T15:28:53.636+0530	connected to: localhost
+2021-04-20T15:28:53.773+0530	imported 150 documents
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ 
+aayesha@aayesha:~$ mongo
+MongoDB shell version v3.6.8
+connecting to: mongodb://127.0.0.1:27017
+Implicit session: session { "id" : UUID("564834cf-6dc2-4d58-bf47-ece46d4b2a51") }
+MongoDB server version: 3.6.8
+Server has startup warnings: 
+2021-04-20T14:09:21.107+0530 I STORAGE  [initandlisten] 
+2021-04-20T14:09:21.107+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2021-04-20T14:09:21.107+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2021-04-20T14:09:26.587+0530 I CONTROL  [initandlisten] 
+2021-04-20T14:09:26.587+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-04-20T14:09:26.587+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-04-20T14:09:26.587+0530 I CONTROL  [initandlisten] 
+> 
+> 
+> 
+> show dbs
+admin     0.000GB
+config    0.000GB
+iris      0.000GB
+irisJson  0.000GB
+local     0.000GB
+myDb      0.000GB
+program1  0.000GB
+regex     0.000GB
+> 
+> 
+> 
+> im
+2021-04-20T15:29:06.878+0530 E QUERY    [thread1] ReferenceError: im is not defined :
+@(shell):1:1
+> 
+> 
+> use irisJson
+switched to db irisJson
+> 
+> 
+> show collections
+flowers
+> 
+> 
+> 
+> db.flowers.count()
+150
+> 
+> 
+> 
+> //CRUD Operations
+>
+>
+>
+> db.flowers.find()
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e3"), "Id" : 1, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e5"), "Id" : 3, "SepalLengthCm" : 4.7, "SepalWidthCm" : 3.2, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e4"), "Id" : 2, "SepalLengthCm" : 4.9, "SepalWidthCm" : 3, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e6"), "Id" : 4, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.1, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e8"), "Id" : 6, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.9, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e7"), "Id" : 5, "SepalLengthCm" : 5, "SepalWidthCm" : 3.6, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e9"), "Id" : 7, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89ea"), "Id" : 8, "SepalLengthCm" : 5, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89eb"), "Id" : 9, "SepalLengthCm" : 4.4, "SepalWidthCm" : 2.9, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89ed"), "Id" : 11, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.7, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89ec"), "Id" : 10, "SepalLengthCm" : 4.9, "SepalWidthCm" : 3.1, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f1"), "Id" : 15, "SepalLengthCm" : 5.8, "SepalWidthCm" : 4, "PetalLengthCm" : 1.2, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f5"), "Id" : 20, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.8, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f3"), "Id" : 18, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f6"), "Id" : 21, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f9"), "Id" : 24, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.3, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.5, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89fa"), "Id" : 25, "SepalLengthCm" : 4.8, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.9, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f8"), "Id" : 23, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.6, "PetalLengthCm" : 1, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f7"), "Id" : 22, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.7, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89fb"), "Id" : 26, "SepalLengthCm" : 5, "SepalWidthCm" : 3, "PetalLengthCm" : 1.6, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+Type "it" for more
+> 
+> 
+> 
+> db.remove({_id: ObjectId("607ea58d9ab25c1fa7ae89fb")})
+2021-04-20T15:35:37.927+0530 E QUERY    [thread1] TypeError: db.remove is not a function :
+@(shell):1:1
+> 
+> 
+> 
+> db.flowers.remove({_id: ObjectId("607ea58d9ab25c1fa7ae89fb")})
+WriteResult({ "nRemoved" : 1 })
+> 
+> 
+> 
+> db.flowers.insert({Id: 27, SepalLengthCm: 5, SepalWidthCm: 3, PetalLengthCm: 1.6, PetalWidthCm: 0.0, Species: "Iris-setosa"})
+WriteResult({ "nInserted" : 1 })
+> 
+> 
+> 
+> db.flowers.update({Id: 27}, {$set: {"PetalWidthCm": 0.2}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> 
+> 
+> 
+> db.flowers.save({_id: ObjectId("607ea58d9ab25c1fa7ae89fb"), Id: 27, SepalLengthCm: 5, SepalWidthCm: 3, PetalLengthCm: 1.6, PetalWidthCm: 0.0, Species: "Iris-setosa"})
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : ObjectId("607ea58d9ab25c1fa7ae89fb")
+})
+> 
+> 
+> 
+> //these were the CRUD operations
+> 
+> 
+> //now, moving on to comparison operations
+> 
+> 
+> //equal to operator
+> 
+> 
+> db.flowers.find({SepalLengthCm: {$eq: 5}})
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e7"), "Id" : 5, "SepalLengthCm" : 5, "SepalWidthCm" : 3.6, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89ea"), "Id" : 8, "SepalLengthCm" : 5, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89fc"), "Id" : 27, "SepalLengthCm" : 5, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.6, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a00"), "Id" : 36, "SepalLengthCm" : 5, "SepalWidthCm" : 3.2, "PetalLengthCm" : 1.2, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a0c"), "Id" : 41, "SepalLengthCm" : 5, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a0d"), "Id" : 44, "SepalLengthCm" : 5, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.6, "PetalWidthCm" : 0.6, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a13"), "Id" : 50, "SepalLengthCm" : 5, "SepalWidthCm" : 3.3, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a1e"), "Id" : 61, "SepalLengthCm" : 5, "SepalWidthCm" : 2, "PetalLengthCm" : 3.5, "PetalWidthCm" : 1, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607ea58e9ab25c1fa7ae8a43"), "Id" : 94, "SepalLengthCm" : 5, "SepalWidthCm" : 2.3, "PetalLengthCm" : 3.3, "PetalWidthCm" : 1, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607ea7f0f2e945d992278668"), "Id" : 27, "SepalLengthCm" : 5, "SepalWidthCm" : 3, "PetalLengthCm" : 1.6, "PetalWidthCm" : 0, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89fb"), "Id" : 27, "SepalLengthCm" : 5, "SepalWidthCm" : 3, "PetalLengthCm" : 1.6, "PetalWidthCm" : 0, "Species" : "Iris-setosa" }
+> 
+> 
+> 
+> //greater than
+>
+> 
+> db.flowers.find({SepalLengthCm: {$gt: 5}})
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e3"), "Id" : 1, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e8"), "Id" : 6, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.9, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89ed"), "Id" : 11, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.7, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f1"), "Id" : 15, "SepalLengthCm" : 5.8, "SepalWidthCm" : 4, "PetalLengthCm" : 1.2, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f5"), "Id" : 20, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.8, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f3"), "Id" : 18, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f6"), "Id" : 21, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f9"), "Id" : 24, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.3, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.5, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f7"), "Id" : 22, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.7, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89fe"), "Id" : 32, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f2"), "Id" : 16, "SepalLengthCm" : 5.7, "SepalWidthCm" : 4.4, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a03"), "Id" : 19, "SepalLengthCm" : 5.7, "SepalWidthCm" : 3.8, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a04"), "Id" : 34, "SepalLengthCm" : 5.5, "SepalWidthCm" : 4.2, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a05"), "Id" : 33, "SepalLengthCm" : 5.2, "SepalWidthCm" : 4.1, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a02"), "Id" : 28, "SepalLengthCm" : 5.2, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f4"), "Id" : 17, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.9, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a06"), "Id" : 29, "SepalLengthCm" : 5.2, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a09"), "Id" : 40, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a08"), "Id" : 37, "SepalLengthCm" : 5.5, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a10"), "Id" : 47, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.8, "PetalLengthCm" : 1.6, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+Type "it" for more
+> 
+> 
+> 
+> //less than
+> 
+> 
+> db.flowers.find({SepalLengthCm: {$lt: 5}})
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e5"), "Id" : 3, "SepalLengthCm" : 4.7, "SepalWidthCm" : 3.2, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e4"), "Id" : 2, "SepalLengthCm" : 4.9, "SepalWidthCm" : 3, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e6"), "Id" : 4, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.1, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e9"), "Id" : 7, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89eb"), "Id" : 9, "SepalLengthCm" : 4.4, "SepalWidthCm" : 2.9, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89ec"), "Id" : 10, "SepalLengthCm" : 4.9, "SepalWidthCm" : 3.1, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89fa"), "Id" : 25, "SepalLengthCm" : 4.8, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.9, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f8"), "Id" : 23, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.6, "PetalLengthCm" : 1, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89ef"), "Id" : 13, "SepalLengthCm" : 4.8, "SepalWidthCm" : 3, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89fd"), "Id" : 30, "SepalLengthCm" : 4.7, "SepalWidthCm" : 3.2, "PetalLengthCm" : 1.6, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89ee"), "Id" : 12, "SepalLengthCm" : 4.8, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.6, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f0"), "Id" : 14, "SepalLengthCm" : 4.3, "SepalWidthCm" : 3, "PetalLengthCm" : 1.1, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89ff"), "Id" : 35, "SepalLengthCm" : 4.9, "SepalWidthCm" : 3.1, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a01"), "Id" : 31, "SepalLengthCm" : 4.8, "SepalWidthCm" : 3.1, "PetalLengthCm" : 1.6, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a0a"), "Id" : 39, "SepalLengthCm" : 4.4, "SepalWidthCm" : 3, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a0b"), "Id" : 42, "SepalLengthCm" : 4.5, "SepalWidthCm" : 2.3, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a0e"), "Id" : 43, "SepalLengthCm" : 4.4, "SepalWidthCm" : 3.2, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a0f"), "Id" : 46, "SepalLengthCm" : 4.8, "SepalWidthCm" : 3, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a11"), "Id" : 48, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.2, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a07"), "Id" : 38, "SepalLengthCm" : 4.9, "SepalWidthCm" : 3.1, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+Type "it" for more
+> 
+> 
+> 
+> //in operator
+> 
+> 
+> db.flowers.find({SepalLengthCm: {$in: [4.6, 4.8, 4.7]}})
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e5"), "Id" : 3, "SepalLengthCm" : 4.7, "SepalWidthCm" : 3.2, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e6"), "Id" : 4, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.1, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e9"), "Id" : 7, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89fa"), "Id" : 25, "SepalLengthCm" : 4.8, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.9, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f8"), "Id" : 23, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.6, "PetalLengthCm" : 1, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89ef"), "Id" : 13, "SepalLengthCm" : 4.8, "SepalWidthCm" : 3, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89fd"), "Id" : 30, "SepalLengthCm" : 4.7, "SepalWidthCm" : 3.2, "PetalLengthCm" : 1.6, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89ee"), "Id" : 12, "SepalLengthCm" : 4.8, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.6, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a01"), "Id" : 31, "SepalLengthCm" : 4.8, "SepalWidthCm" : 3.1, "PetalLengthCm" : 1.6, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a0f"), "Id" : 46, "SepalLengthCm" : 4.8, "SepalWidthCm" : 3, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a11"), "Id" : 48, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.2, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+> 
+> 
+> 
+> //nin operator
+> 
+> 
+> 
+> db.flowers.find({SepalLengthCm: {$nin: [4.6, 4.8, 4.7]}})
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e3"), "Id" : 1, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e4"), "Id" : 2, "SepalLengthCm" : 4.9, "SepalWidthCm" : 3, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e8"), "Id" : 6, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.9, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e7"), "Id" : 5, "SepalLengthCm" : 5, "SepalWidthCm" : 3.6, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89ea"), "Id" : 8, "SepalLengthCm" : 5, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89eb"), "Id" : 9, "SepalLengthCm" : 4.4, "SepalWidthCm" : 2.9, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89ed"), "Id" : 11, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.7, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89ec"), "Id" : 10, "SepalLengthCm" : 4.9, "SepalWidthCm" : 3.1, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f1"), "Id" : 15, "SepalLengthCm" : 5.8, "SepalWidthCm" : 4, "PetalLengthCm" : 1.2, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f5"), "Id" : 20, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.8, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f3"), "Id" : 18, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f6"), "Id" : 21, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f9"), "Id" : 24, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.3, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.5, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f7"), "Id" : 22, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.7, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89fe"), "Id" : 32, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89fc"), "Id" : 27, "SepalLengthCm" : 5, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.6, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f0"), "Id" : 14, "SepalLengthCm" : 4.3, "SepalWidthCm" : 3, "PetalLengthCm" : 1.1, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f2"), "Id" : 16, "SepalLengthCm" : 5.7, "SepalWidthCm" : 4.4, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a03"), "Id" : 19, "SepalLengthCm" : 5.7, "SepalWidthCm" : 3.8, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a04"), "Id" : 34, "SepalLengthCm" : 5.5, "SepalWidthCm" : 4.2, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+Type "it" for more
+> 
+> 
+> 
+> //logical operations
+> 
+> 
+> //and
+> 
+> 
+> db.flowers.find({$and: [{SepalLengthCm: 5.5}, {PetalLengthCm: 1.4}]})
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a04"), "Id" : 34, "SepalLengthCm" : 5.5, "SepalWidthCm" : 4.2, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+> 
+> 
+> 
+> //or
+> 
+> 
+> db.flowers.find({$or: [{SepalLengthCm: 5.5}, {PetalLengthCm: 1.4}]})
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e3"), "Id" : 1, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e4"), "Id" : 2, "SepalLengthCm" : 4.9, "SepalWidthCm" : 3, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e7"), "Id" : 5, "SepalLengthCm" : 5, "SepalWidthCm" : 3.6, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e9"), "Id" : 7, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89eb"), "Id" : 9, "SepalLengthCm" : 4.4, "SepalWidthCm" : 2.9, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f3"), "Id" : 18, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89ef"), "Id" : 13, "SepalLengthCm" : 4.8, "SepalWidthCm" : 3, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a04"), "Id" : 34, "SepalLengthCm" : 5.5, "SepalWidthCm" : 4.2, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a06"), "Id" : 29, "SepalLengthCm" : 5.2, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a08"), "Id" : 37, "SepalLengthCm" : 5.5, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a0f"), "Id" : 46, "SepalLengthCm" : 4.8, "SepalWidthCm" : 3, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a11"), "Id" : 48, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.2, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a17"), "Id" : 54, "SepalLengthCm" : 5.5, "SepalWidthCm" : 2.3, "PetalLengthCm" : 4, "PetalWidthCm" : 1.3, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a13"), "Id" : 50, "SepalLengthCm" : 5, "SepalWidthCm" : 3.3, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58e9ab25c1fa7ae8a3b"), "Id" : 90, "SepalLengthCm" : 5.5, "SepalWidthCm" : 2.5, "PetalLengthCm" : 4, "PetalWidthCm" : 1.3, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607ea58e9ab25c1fa7ae8a33"), "Id" : 81, "SepalLengthCm" : 5.5, "SepalWidthCm" : 2.4, "PetalLengthCm" : 3.8, "PetalWidthCm" : 1.1, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607ea58e9ab25c1fa7ae8a35"), "Id" : 82, "SepalLengthCm" : 5.5, "SepalWidthCm" : 2.4, "PetalLengthCm" : 3.7, "PetalWidthCm" : 1, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607ea58e9ab25c1fa7ae8a3c"), "Id" : 91, "SepalLengthCm" : 5.5, "SepalWidthCm" : 2.6, "PetalLengthCm" : 4.4, "PetalWidthCm" : 1.2, "Species" : "Iris-versicolor" }
+> 
+> 
+> 
+> //not
+> 
+> 
+> db.flowers.find({$not: {SepalLengthCm: 5.5}})
+Error: error: {
+	"ok" : 0,
+	"errmsg" : "unknown top level operator: $not",
+	"code" : 2,
+	"codeName" : "BadValue"
+}
+> 
+> 
+> 
+> db.flowers.find({SepalLengthCm: {$not: {$eq: 5.5}}})
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e3"), "Id" : 1, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e5"), "Id" : 3, "SepalLengthCm" : 4.7, "SepalWidthCm" : 3.2, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e4"), "Id" : 2, "SepalLengthCm" : 4.9, "SepalWidthCm" : 3, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e6"), "Id" : 4, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.1, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e8"), "Id" : 6, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.9, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e7"), "Id" : 5, "SepalLengthCm" : 5, "SepalWidthCm" : 3.6, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e9"), "Id" : 7, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89ea"), "Id" : 8, "SepalLengthCm" : 5, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89eb"), "Id" : 9, "SepalLengthCm" : 4.4, "SepalWidthCm" : 2.9, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89ed"), "Id" : 11, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.7, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89ec"), "Id" : 10, "SepalLengthCm" : 4.9, "SepalWidthCm" : 3.1, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f1"), "Id" : 15, "SepalLengthCm" : 5.8, "SepalWidthCm" : 4, "PetalLengthCm" : 1.2, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f5"), "Id" : 20, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.8, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f3"), "Id" : 18, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f6"), "Id" : 21, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f9"), "Id" : 24, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.3, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.5, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89fa"), "Id" : 25, "SepalLengthCm" : 4.8, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.9, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f8"), "Id" : 23, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.6, "PetalLengthCm" : 1, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f7"), "Id" : 22, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.7, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89fe"), "Id" : 32, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+Type "it" for more
+> 
+> 
+> 
+> //complex queries
+> 
+> 
+> db.flowers.find({$and: [{SepalLengthCm: 5.4}, {SepalWidthCm: {$lt: 3.4}}]})
+{ "_id" : ObjectId("607ea58e9ab25c1fa7ae8a36"), "Id" : 85, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3, "PetalLengthCm" : 4.5, "PetalWidthCm" : 1.5, "Species" : "Iris-versicolor" }
+> 
+> 
+> 
+> //aggregate functions
+> 
+> 
+> //match
+> 
+> 
+> db.flowers.aggregate({$match: {SepalLengthCm: 5.4}})
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e8"), "Id" : 6, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.9, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89ed"), "Id" : 11, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.7, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f6"), "Id" : 21, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89fe"), "Id" : 32, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f4"), "Id" : 17, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.9, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58e9ab25c1fa7ae8a36"), "Id" : 85, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3, "PetalLengthCm" : 4.5, "PetalWidthCm" : 1.5, "Species" : "Iris-versicolor" }
+> 
+> 
+> 
+> //group
+> 
+> 
+> db.flowers.aggregate({$group: {_id: "$Id", SepalLengthCm: {$max: "$SepalLengthCm"}}})
+{ "_id" : 129, "SepalLengthCm" : 6.4 }
+{ "_id" : 146, "SepalLengthCm" : 6.7 }
+{ "_id" : 150, "SepalLengthCm" : 5.9 }
+{ "_id" : 143, "SepalLengthCm" : 5.8 }
+{ "_id" : 141, "SepalLengthCm" : 6.7 }
+{ "_id" : 136, "SepalLengthCm" : 7.7 }
+{ "_id" : 134, "SepalLengthCm" : 6.3 }
+{ "_id" : 139, "SepalLengthCm" : 6 }
+{ "_id" : 145, "SepalLengthCm" : 6.7 }
+{ "_id" : 142, "SepalLengthCm" : 6.9 }
+{ "_id" : 120, "SepalLengthCm" : 6 }
+{ "_id" : 63, "SepalLengthCm" : 6 }
+{ "_id" : 125, "SepalLengthCm" : 6.7 }
+{ "_id" : 53, "SepalLengthCm" : 6.9 }
+{ "_id" : 111, "SepalLengthCm" : 6.5 }
+{ "_id" : 56, "SepalLengthCm" : 5.7 }
+{ "_id" : 121, "SepalLengthCm" : 6.9 }
+{ "_id" : 18, "SepalLengthCm" : 5.1 }
+{ "_id" : 52, "SepalLengthCm" : 6.4 }
+{ "_id" : 50, "SepalLengthCm" : 5 }
+Type "it" for more
+> 
+> 
+> 
+> db.flowers.aggregate({$group: {_id: "$Species", SepalLengthCm: {$max: "$SepalLengthCm"}}})
+{ "_id" : "Iris-virginica", "SepalLengthCm" : 7.9 }
+{ "_id" : "Iris-versicolor", "SepalLengthCm" : 7 }
+{ "_id" : "Iris-setosa", "SepalLengthCm" : 5.8 }
+> 
+> 
+> 
+> //max of all
+> 
+> 
+> db.flowers.aggregate({$group: {_id: null, PetalLengthCm: {$max: "$PetalLengthCm"}}})
+{ "_id" : null, "PetalLengthCm" : 6.9 }
+> 
+> 
+> 
+> //project
+> 
+> 
+> db.flowers.aggregate({$project: {SepalLengthCm: 1, Species: 1, _id: 0}})
+{ "SepalLengthCm" : 5.1, "Species" : "Iris-setosa" }
+{ "SepalLengthCm" : 4.7, "Species" : "Iris-setosa" }
+{ "SepalLengthCm" : 4.9, "Species" : "Iris-setosa" }
+{ "SepalLengthCm" : 4.6, "Species" : "Iris-setosa" }
+{ "SepalLengthCm" : 5.4, "Species" : "Iris-setosa" }
+{ "SepalLengthCm" : 5, "Species" : "Iris-setosa" }
+{ "SepalLengthCm" : 4.6, "Species" : "Iris-setosa" }
+{ "SepalLengthCm" : 5, "Species" : "Iris-setosa" }
+{ "SepalLengthCm" : 4.4, "Species" : "Iris-setosa" }
+{ "SepalLengthCm" : 5.4, "Species" : "Iris-setosa" }
+{ "SepalLengthCm" : 4.9, "Species" : "Iris-setosa" }
+{ "SepalLengthCm" : 5.8, "Species" : "Iris-setosa" }
+{ "SepalLengthCm" : 5.1, "Species" : "Iris-setosa" }
+{ "SepalLengthCm" : 5.1, "Species" : "Iris-setosa" }
+{ "SepalLengthCm" : 5.4, "Species" : "Iris-setosa" }
+{ "SepalLengthCm" : 5.1, "Species" : "Iris-setosa" }
+{ "SepalLengthCm" : 4.8, "Species" : "Iris-setosa" }
+{ "SepalLengthCm" : 4.6, "Species" : "Iris-setosa" }
+{ "SepalLengthCm" : 5.1, "Species" : "Iris-setosa" }
+{ "SepalLengthCm" : 5.4, "Species" : "Iris-setosa" }
+Type "it" for more
+> 
+> 
+> 
+> //limit
+> 
+> 
+> db.flowers.aggregate({$limit: 3})
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e3"), "Id" : 1, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e5"), "Id" : 3, "SepalLengthCm" : 4.7, "SepalWidthCm" : 3.2, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e4"), "Id" : 2, "SepalLengthCm" : 4.9, "SepalWidthCm" : 3, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+> 
+> 
+> //sum
+> 
+> 
+> db.flowers.aggregate({$group: {_id: "$Species", SepalLengthCm: {$sum: "$SepalLengthCm"}}})
+{ "_id" : "Iris-virginica", "SepalLengthCm" : 329.4 }
+{ "_id" : "Iris-versicolor", "SepalLengthCm" : 296.8 }
+{ "_id" : "Iris-setosa", "SepalLengthCm" : 255.3 }
+> 
+> 
+> 
+> //average
+> 
+> 
+> db.flowers.aggregate({$group: {_id: "$Species", SepalLengthCm: {$avg: "$SepalLengthCm"}}})
+{ "_id" : "Iris-virginica", "SepalLengthCm" : 6.587999999999999 }
+{ "_id" : "Iris-versicolor", "SepalLengthCm" : 5.936 }
+{ "_id" : "Iris-setosa", "SepalLengthCm" : 5.0058823529411764 }
+> 
+> 
+> 
+> //minimum
+> 
+> 
+> db.flowers.aggregate({$group: {_id: "$Species", SepalLengthCm: {$min: "$SepalLengthCm"}}})
+{ "_id" : "Iris-virginica", "SepalLengthCm" : 4.9 }
+{ "_id" : "Iris-versicolor", "SepalLengthCm" : 4.9 }
+{ "_id" : "Iris-setosa", "SepalLengthCm" : 4.3 }
+> 
+> 
+> 
+> maximum
+2021-04-20T16:27:14.437+0530 E QUERY    [thread1] ReferenceError: maximum is not defined :
+@(shell):1:1
+> 
+> 
+> db.flowers.aggregate({$group: {_id: "$Species", SepalLengthCm: {$max: "$SepalLengthCm"}}})
+{ "_id" : "Iris-virginica", "SepalLengthCm" : 7.9 }
+{ "_id" : "Iris-versicolor", "SepalLengthCm" : 7 }
+{ "_id" : "Iris-setosa", "SepalLengthCm" : 5.8 }
+> 
+> 
+> 
+> //sort
+> 
+> 
+> db.flowers.aggregate([{$sort: {PetalLengthCm: 1}])
+... 
+... 
+> db.flowers.aggregate({$sort: {PetalLengthCm: 1}})
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f8"), "Id" : 23, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.6, "PetalLengthCm" : 1, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f0"), "Id" : 14, "SepalLengthCm" : 4.3, "SepalWidthCm" : 3, "PetalLengthCm" : 1.1, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f1"), "Id" : 15, "SepalLengthCm" : 5.8, "SepalWidthCm" : 4, "PetalLengthCm" : 1.2, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a00"), "Id" : 36, "SepalLengthCm" : 5, "SepalWidthCm" : 3.2, "PetalLengthCm" : 1.2, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e5"), "Id" : 3, "SepalLengthCm" : 4.7, "SepalWidthCm" : 3.2, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f4"), "Id" : 17, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.9, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a08"), "Id" : 37, "SepalLengthCm" : 5.5, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a0a"), "Id" : 39, "SepalLengthCm" : 4.4, "SepalWidthCm" : 3, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a0b"), "Id" : 42, "SepalLengthCm" : 4.5, "SepalWidthCm" : 2.3, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a0e"), "Id" : 43, "SepalLengthCm" : 4.4, "SepalWidthCm" : 3.2, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a0c"), "Id" : 41, "SepalLengthCm" : 5, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e3"), "Id" : 1, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e4"), "Id" : 2, "SepalLengthCm" : 4.9, "SepalWidthCm" : 3, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e7"), "Id" : 5, "SepalLengthCm" : 5, "SepalWidthCm" : 3.6, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e9"), "Id" : 7, "SepalLengthCm" : 4.6, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89eb"), "Id" : 9, "SepalLengthCm" : 4.4, "SepalWidthCm" : 2.9, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f3"), "Id" : 18, "SepalLengthCm" : 5.1, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89ef"), "Id" : 13, "SepalLengthCm" : 4.8, "SepalWidthCm" : 3, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a04"), "Id" : 34, "SepalLengthCm" : 5.5, "SepalWidthCm" : 4.2, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a06"), "Id" : 29, "SepalLengthCm" : 5.2, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+Type "it" for more
+> 
+> 
+> 
+> db.flowers.aggregate([{$match: {SepalLengthCm: 5.2}}, {$sort: {PetalLengthCm: 1}}])
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a06"), "Id" : 29, "SepalLengthCm" : 5.2, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a05"), "Id" : 33, "SepalLengthCm" : 5.2, "SepalWidthCm" : 4.1, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a02"), "Id" : 28, "SepalLengthCm" : 5.2, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a1d"), "Id" : 60, "SepalLengthCm" : 5.2, "SepalWidthCm" : 2.7, "PetalLengthCm" : 3.9, "PetalWidthCm" : 1.4, "Species" : "Iris-versicolor" }
+> 
+> 
+> 
+> //complex sorting
+> 
+> 
+> db.flowers.aggregate([{$match: {SepalLengthCm: 5.2}}, {$sort: {PetalLengthCm: 1}}])
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a06"), "Id" : 29, "SepalLengthCm" : 5.2, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a05"), "Id" : 33, "SepalLengthCm" : 5.2, "SepalWidthCm" : 4.1, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a02"), "Id" : 28, "SepalLengthCm" : 5.2, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a1d"), "Id" : 60, "SepalLengthCm" : 5.2, "SepalWidthCm" : 2.7, "PetalLengthCm" : 3.9, "PetalWidthCm" : 1.4, "Species" : "Iris-versicolor" }
+> 
+> 
+> 
+> db.flowers.aggregate([{$match: {SepalLengthCm: {$gte: 5.2}}}, {$sort: {PetalLengthCm: 1}}])
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f1"), "Id" : 15, "SepalLengthCm" : 5.8, "SepalWidthCm" : 4, "PetalLengthCm" : 1.2, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f4"), "Id" : 17, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.9, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a08"), "Id" : 37, "SepalLengthCm" : 5.5, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.3, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a04"), "Id" : 34, "SepalLengthCm" : 5.5, "SepalWidthCm" : 4.2, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a06"), "Id" : 29, "SepalLengthCm" : 5.2, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.4, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89ed"), "Id" : 11, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.7, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89fe"), "Id" : 32, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f2"), "Id" : 16, "SepalLengthCm" : 5.7, "SepalWidthCm" : 4.4, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a05"), "Id" : 33, "SepalLengthCm" : 5.2, "SepalWidthCm" : 4.1, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.1, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a02"), "Id" : 28, "SepalLengthCm" : 5.2, "SepalWidthCm" : 3.5, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a12"), "Id" : 49, "SepalLengthCm" : 5.3, "SepalWidthCm" : 3.7, "PetalLengthCm" : 1.5, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89e8"), "Id" : 6, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.9, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.4, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae89f6"), "Id" : 21, "SepalLengthCm" : 5.4, "SepalWidthCm" : 3.4, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.2, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a03"), "Id" : 19, "SepalLengthCm" : 5.7, "SepalWidthCm" : 3.8, "PetalLengthCm" : 1.7, "PetalWidthCm" : 0.3, "Species" : "Iris-setosa" }
+{ "_id" : ObjectId("607ea58e9ab25c1fa7ae8a31"), "Id" : 80, "SepalLengthCm" : 5.7, "SepalWidthCm" : 2.6, "PetalLengthCm" : 3.5, "PetalWidthCm" : 1, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607ea58e9ab25c1fa7ae8a23"), "Id" : 65, "SepalLengthCm" : 5.6, "SepalWidthCm" : 2.9, "PetalLengthCm" : 3.6, "PetalWidthCm" : 1.3, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607ea58e9ab25c1fa7ae8a35"), "Id" : 82, "SepalLengthCm" : 5.5, "SepalWidthCm" : 2.4, "PetalLengthCm" : 3.7, "PetalWidthCm" : 1, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607ea58e9ab25c1fa7ae8a33"), "Id" : 81, "SepalLengthCm" : 5.5, "SepalWidthCm" : 2.4, "PetalLengthCm" : 3.8, "PetalWidthCm" : 1.1, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607ea58e9ab25c1fa7ae8a28"), "Id" : 70, "SepalLengthCm" : 5.6, "SepalWidthCm" : 2.5, "PetalLengthCm" : 3.9, "PetalWidthCm" : 1.1, "Species" : "Iris-versicolor" }
+{ "_id" : ObjectId("607ea58d9ab25c1fa7ae8a1d"), "Id" : 60, "SepalLengthCm" : 5.2, "SepalWidthCm" : 2.7, "PetalLengthCm" : 3.9, "PetalWidthCm" : 1.4, "Species" : "Iris-versicolor" }
+Type "it" for more
+> 
+> 
+> 
+> //map reduce
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> db.flowers.mapReduce(function(){ emit(this.Species, this.SepalLengthCm); }, function(key, values) { return Array.sum( values)}, {query: {PetalWidthCm: 1.4}, out: "Iris_totals" }) 
+{
+	"result" : "Iris_totals",
+	"timeMillis" : 677,
+	"counts" : {
+		"input" : 8,
+		"emit" : 8,
+		"reduce" : 1,
+		"output" : 2
+	},
+	"ok" : 1
+}
+> 
+> 
+> 
+> show collections
+Iris_totals
+flowers
+> 
+> 
+> 
+> db.Iris_totals.find().pretty()
+{ "_id" : "Iris-versicolor", "value" : 44.5 }
+{ "_id" : "Iris-virginica", "value" : 6.1 }
+> 
+> 
+> exit
+bye
+aayesha@aayesha:~$ 
+
+
